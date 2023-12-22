@@ -3,20 +3,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Random;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.Timer;
+
 
 
 
 public class MyFrame extends JFrame implements KeyListener{
     
-    private Label lblProva;
+    private Label label1;
+    private Label label2;
+    private Label label3;
+    private Label label4;
+    private Label label5;
     private int punteggio=0;
     
     public MyFrame() throws InterruptedException{
@@ -28,15 +29,36 @@ public class MyFrame extends JFrame implements KeyListener{
         this.addKeyListener(this);
         
         
-        lblProva= new Label("prova");
-        lblProva.setVisible(true);
-        this.add(lblProva);
+        label1= new Label("label1");
+        label2= new Label("label2");
+        label3= new Label("label3");
+        label4= new Label("label4");
+        label5= new Label("label5");
+        
+        label1.setBounds(50,60,10,10);
+        label2.setBounds(70,60,10,10);
+        label3.setBounds(120,60,10,10);
+        label4.setBounds(150,60,10,10);
+        label5.setBounds(170,60,10,10);
+        
+        //label1.setVisible(true);
+        this.add(label1);
+        this.add(label2);
+        this.add(label3);
+        this.add(label4);
+        this.add(label5);
+        
+   
         cambiaColore();
         
     }
    
     public void cambiaColore() throws InterruptedException{
-        new GestisciColore (lblProva).start();
+        new GestisciColore (label1).start();
+        new GestisciColore (label2).start();
+        new GestisciColore (label3).start();
+        new GestisciColore (label4).start();
+        new GestisciColore (label5).start();
     }
     
     
@@ -49,7 +71,7 @@ public class MyFrame extends JFrame implements KeyListener{
         // Codice da eseguire quando viene premuto un tasto
         int keyCode = e.getKeyCode();
         System.out.println("Tasto premuto: " + KeyEvent.getKeyText(keyCode));
-        
+
         
     }
 
@@ -59,9 +81,17 @@ public class MyFrame extends JFrame implements KeyListener{
 
     public void keyTyped(KeyEvent e) {
         // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
-        if(lblProva.getForeground().equals(Color.red)){
+        if(label1.getForeground().equals(Color.red) && e.getKeyChar()=='a')
             punteggio++;
-        }else{
+        else if (label2.getForeground().equals(Color.red) && e.getKeyChar()=='s')
+            punteggio++;
+        else if(label3.getForeground().equals(Color.red) && e.getKeyChar()=='d')
+            punteggio++;
+        else if(label4.getForeground().equals(Color.red) && e.getKeyChar()=='f')
+            punteggio++;
+        else if(label5.getForeground().equals(Color.red) && e.getKeyChar()=='g')
+            punteggio++;
+        else{
             punteggio--;
         }
         System.out.println(punteggio);

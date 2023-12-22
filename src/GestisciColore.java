@@ -18,10 +18,10 @@ public class GestisciColore extends Thread{
     
     private Label label;
     
-    public GestisciColore(Label label){
-        this.label=label;     
+    public GestisciColore(Label label) {
+        this.label = label;
+  
     }
- 
     public void run(){
         Random r= new Random();
         while(true){   
