@@ -16,7 +16,7 @@ public class Server {
 
             // Send the audio file to the client
             ArrayList<File>listsongs=new ArrayList<>();
-            listsongs.add(new File("src/canzoni/file1.wav"));
+            listsongs.add(new File("src/canzoni/file1-2.wav"));
             //listsongs.add(new File("src/canzoni/file2.wav"));
             //listsongs.add(new File("src/canzoni/file3.wav"));
             Random r= new Random();

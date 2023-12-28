@@ -6,7 +6,9 @@ import java.awt.Label;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 
 
@@ -18,6 +20,7 @@ public class MyFrame extends JFrame implements KeyListener{
     private Label label3;
     private Label label4;
     private Label label5;
+   // private JLabel lblImmagine;
     private int punteggio=0;
     
     public MyFrame() throws InterruptedException{
@@ -27,6 +30,8 @@ public class MyFrame extends JFrame implements KeyListener{
         this.setVisible(true);
         this.setFocusable(true);        
         this.addKeyListener(this);
+        
+        //lblImmagine=new JLabel(new ImageIcon("immagini/ball.jpg"));
         
         
         label1= new Label("label1");
@@ -47,7 +52,7 @@ public class MyFrame extends JFrame implements KeyListener{
         this.add(label3);
         this.add(label4);
         this.add(label5);
-        
+      //  this.add(lblImmagine);
    
         cambiaColore();
         

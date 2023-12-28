@@ -1,0 +1,16 @@
+{
+    "data": [
+      {
+        "posizione": 1,
+        "tempo": 2000
+      },
+      {
+        "posizione": 3,
+        "tempo": 3000
+      },
+      {
+        "posizione": 5,
+        "tempo": 4000
+      }
+    ]
+}
