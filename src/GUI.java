@@ -39,9 +39,9 @@ public class GUI {
             String fileName = "canzoni_ricevute/received_audio.wav";
             connectToserver(fileName);
             
-            leggiJSON();
+            //leggiJSON();
             /* run song */
-            //playSong(fileName);
+            playSong(fileName);
             
             
 
