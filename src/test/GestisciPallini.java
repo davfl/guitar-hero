@@ -1,9 +1,7 @@
 package test;
 
 
-
 import java.awt.Color;
-import java.awt.Label;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -42,22 +40,17 @@ public class GestisciPallini extends Thread {
         this.quad5 = quad5;
         this.count = 0;
     }
-
-
-  
+    
     @Override
     public void run(){
         ArrayList<JSONObject> oggetti= new ArrayList<>();
         String text;
-        //JSONObject obj; 
         try {
             text = new String(Files.readAllBytes(Paths.get("file_json/prova.json")), StandardCharsets.UTF_8); 
             JSONObject obj = new JSONObject(text);   
             JSONArray data= obj.getJSONArray("data");
             for(int i=0; i<data.length();i++){
-                //JSONObject dato1= data.getJSONObject(i);
                 oggetti.add(data.getJSONObject(i));
-               // System.out.println(dato1);
             }
             
 
@@ -65,15 +58,7 @@ public class GestisciPallini extends Thread {
             Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
-        
-
-        //long tempoInizio = System.currentTimeMillis();
-
-        // Inizia il contatore
-       
-
         // Esegui un loop per contare
-        //while (true) {
         for (int i=0; i<oggetti.size(); i++){
             int nota=oggetti.get(i).getInt("posizione");
                     this.quad1.setBackground(Color.red);
@@ -100,43 +85,6 @@ public class GestisciPallini extends Thread {
             }
             try {
                 sleep(2000);
-                
-                // Ottieni il tempo corrente in millisecondi
-                // long tempoCorrente = System.currentTimeMillis();
-                // Calcola la differenza di tempo
-                // long differenzaTempo = tempoCorrente - tempoInizio;
-                
-                // Incrementa il contatore ogni 100 millisecondi (decimillesimi di secondo)
-                /*if (differenzaTempo >= 1) {
-                count++;
-                tempoInizio = tempoCorrente; // Aggiorna il tempo di inizio
-                System.out.println("Contatore: " + count);
-                }
-                
-                if(oggetti.get(i).)
-                
-                
-                //long tempoInizio = System.currentTimeMillis();
-                
-                // Inizia il contatore
-                
-                
-                // Esegui un loop per contare
-                //while (true) {
-                /*for (int i=0; i<oggetti.size(); i++){
-                // Ottieni il tempo corrente in millisecondi
-                long tempoCorrente = System.currentTimeMillis();
-                // Calcola la differenza di tempo
-                long differenzaTempo = tempoCorrente - tempoInizio;
-                
-                // Incrementa il contatore ogni 100 millisecondi (decimillesimi di secondo)
-                if (differenzaTempo >= 1) {
-                count++;
-                tempoInizio = tempoCorrente; // Aggiorna il tempo di inizio
-                System.out.println("Contatore: " + count);
-                }
-                
-                if(oggetti.get(i).)*/
             } catch (InterruptedException ex) {
                 Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
             }
