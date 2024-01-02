@@ -186,14 +186,14 @@ public class MainScreen implements KeyListener{
         frame.revalidate();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new MainScreen();
             }
         });
-    }
+    }*/
 
         
     public void keyTyped(KeyEvent e) {
@@ -241,9 +241,3 @@ public class MainScreen implements KeyListener{
     }
 
 }
-
-
-
-//////
-
-
