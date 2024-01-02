@@ -58,7 +58,7 @@ public class GesctisciPallini extends Thread {
         }
         
 
-        long tempoInizio = System.currentTimeMillis();
+        //long tempoInizio = System.currentTimeMillis();
 
         // Inizia il contatore
        

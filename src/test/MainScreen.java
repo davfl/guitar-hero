@@ -156,11 +156,12 @@ public class MainScreen implements KeyListener{
             newPage.add(quad4, gbc);gbc.gridx++;
             newPage.add(quad5, gbc);gbc.gridx++;
             
-            new GestisciColore (quad1,red).start();
+            /*new GestisciColore (quad1,red).start();
             new GestisciColore (quad2,yellow).start();
             new GestisciColore (quad3,green).start();
             new GestisciColore (quad4,pink).start();
-            new GestisciColore (quad5,blue).start();
+            new GestisciColore (quad5,blue).start();*/
+            new GestisciPallini(quad1, quad2, quad3, quad4, quad5).start();
 
             
             
@@ -172,8 +173,8 @@ public class MainScreen implements KeyListener{
                 frame.repaint();
                 frame.setContentPane(new JLabel(new ImageIcon("src/image/red.jpg")));
                 frame.setLayout(new BorderLayout());
-                frame.add(mainPanel, BorderLayout.CENTER);
-                frame.revalidate();
+                frame.add(mainPanel, BorderLayout.CENTER);//disegna sopra il main panel, ovvero quello di partenza
+                frame.revalidate();//ricarica la pagina di base
             }
         });
 

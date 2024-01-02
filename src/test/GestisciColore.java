@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  *
  * @author d.florini
  */
-public class GestisciColore extends Thread{
+/*public class GestisciColore extends Thread{
     
     private JPanel quad;
     private Color color;
@@ -45,3 +45,4 @@ public class GestisciColore extends Thread{
         }
     }
 }
+*/
