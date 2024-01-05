@@ -156,11 +156,6 @@ public class MainScreen implements KeyListener{
             newPage.add(quad4, gbc);gbc.gridx++;
             newPage.add(quad5, gbc);gbc.gridx++;
             
-            /*new GestisciColore (quad1,red).start();
-            new GestisciColore (quad2,yellow).start();
-            new GestisciColore (quad3,green).start();
-            new GestisciColore (quad4,pink).start();
-            new GestisciColore (quad5,blue).start();*/
             new GestisciPallini(quad1, quad2, quad3, quad4, quad5).start();
 
             
