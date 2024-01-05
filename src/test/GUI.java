@@ -97,7 +97,7 @@ public class GUI {
             exc.printStackTrace(System.out);
         }
     }
-    public static void leggiJSON() throws IOException{
+    /*public static void leggiJSON() throws IOException{
         String text = new String(Files.readAllBytes(Paths.get("file_json/prova.json")), StandardCharsets.UTF_8);
         JSONObject obj = new JSONObject(text);
         JSONArray data= obj.getJSONArray("data");
@@ -108,5 +108,5 @@ public class GUI {
         }
 
         
-    }
+    }*/
 }

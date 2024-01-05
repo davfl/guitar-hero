@@ -20,11 +20,8 @@ public class GestioneTimer extends TimerTask{
     
     @Override
     public void run() {
-        //if(count<3000)
-        //while(true){
-       // if(count!=2000)
-            count++;
-        System.out.println(count);//}
+        count++;
+        //System.out.println(count);
     }
 
     public long getCount() {
