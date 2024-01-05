@@ -4,7 +4,10 @@
  */
 package test;
 
+import static java.lang.Thread.sleep;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,17 +18,22 @@ public class GestioneTimer extends TimerTask{
     private long count;
     
     public GestioneTimer(){
-        count=0;
+        this.count=0;
     }
     
     @Override
     public void run() {
-        count++;
-        //System.out.println(count);
+        this.count++;
+        /*try {
+            sleep(1);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestioneTimer.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        System.out.println("timer "+this.count);
     }
 
     public long getCount() {
-        return count;
+        return this.count;
     }
     
 }

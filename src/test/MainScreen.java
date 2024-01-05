@@ -13,6 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 public class MainScreen implements KeyListener{
     private JFrame frame;
@@ -51,14 +57,22 @@ public class MainScreen implements KeyListener{
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                openNewPage();
+                try {
+                    openNewPage();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
         multiplayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                openNewPage();
+                try {
+                    openNewPage();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -90,7 +104,7 @@ public class MainScreen implements KeyListener{
         return button;
     }
 
-    private void openNewPage() {
+    private void openNewPage() throws IOException {
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.addKeyListener((KeyListener) this);
@@ -133,7 +147,7 @@ public class MainScreen implements KeyListener{
             quad5 = new JPanel();
             
             //set dei colori
-            Color red = Color.red;
+            /*Color red = Color.red;
             Color yellow = Color.yellow;
             Color green = Color.green;
             Color pink = Color.pink;
@@ -143,8 +157,11 @@ public class MainScreen implements KeyListener{
             quad3.setBackground(green);
             quad4.setBackground(pink);
             quad5.setBackground(blue);
+            
+            */
+            
         
-            quad1.setPreferredSize(new Dimension(20, 20));
+            quad1.setPreferredSize(new Dimension(20,20));
             quad2.setPreferredSize(new Dimension(20, 20));
             quad3.setPreferredSize(new Dimension(20, 20));
             quad4.setPreferredSize(new Dimension(20, 20));
@@ -155,7 +172,13 @@ public class MainScreen implements KeyListener{
             newPage.add(quad3, gbc);gbc.gridx++;
             newPage.add(quad4, gbc);gbc.gridx++;
             newPage.add(quad5, gbc);gbc.gridx++;
+           
             
+            //BufferedImage img = ImageIO.read(new File("src/5.png"));
+            ImageIcon imga= new ImageIcon("src/image/14-2.png");
+            JLabel imag= new JLabel(imga);
+            quad1.add(imag);
+           
             new GestisciPallini(quad1, quad2, quad3, quad4, quad5).start();
 
             
@@ -214,7 +237,7 @@ public class MainScreen implements KeyListener{
             punteggio--; 
         }
         score.setText("Score: "+punteggio);
-        System.out.println(punteggio);
+        //System.out.println(punteggio);
     }
 
     
