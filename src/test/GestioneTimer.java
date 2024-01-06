@@ -29,7 +29,7 @@ public class GestioneTimer extends TimerTask{
         } catch (InterruptedException ex) {
             Logger.getLogger(GestioneTimer.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        System.out.println("timer "+this.count);
+        //System.out.println("timer "+this.count);
     }
 
     public long getCount() {

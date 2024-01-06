@@ -33,26 +33,13 @@ public class GUI {
      */
    
     public static void main(String[] args) throws InterruptedException, IOException {
-        // TODO code application logic here
-        //new MyFrame();
-       //new NewFrame();
         new MainScreen();
-        //try {
             // Connect to the server
             String fileName = "canzoni_ricevute/received_audio.wav";
             connectToserver(fileName);
-            
-            //leggiJSON();
             /* run song */
-            playSong(fileName);
+            //playSong(fileName);
             
-            
-
-            
-      /*  } catch (IOException e) {
-            // Log the error
-            System.out.println("Error: " + e.getMessage());
-        }*/
     }
      public static void connectToserver(String fileName) throws IOException{
             Socket socket = new Socket("localhost", 1234);
@@ -97,16 +84,4 @@ public class GUI {
             exc.printStackTrace(System.out);
         }
     }
-    /*public static void leggiJSON() throws IOException{
-        String text = new String(Files.readAllBytes(Paths.get("file_json/prova.json")), StandardCharsets.UTF_8);
-        JSONObject obj = new JSONObject(text);
-        JSONArray data= obj.getJSONArray("data");
-        
-        for(int i=0; i<data.length();i++){
-            JSONObject dato1= data.getJSONObject(i);
-            System.out.println(dato1);
-        }
-
-        
-    }*/
 }

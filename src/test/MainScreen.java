@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
 
 public class MainScreen implements KeyListener{
     private JFrame frame;
@@ -44,7 +45,6 @@ public class MainScreen implements KeyListener{
 
         // Background Image
         ImageIcon backgroundImage = new ImageIcon("src/image/red.jpg");
-        
         // labels
         JLabel titleLabel = new JLabel("Guitar Hero");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
@@ -59,7 +59,10 @@ public class MainScreen implements KeyListener{
             public void actionPerformed(ActionEvent e) {
                 try {
                     openNewPage();
-                } catch (IOException ex) {
+                } 
+                 catch (LineUnavailableException ex) {
+                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                 } catch (IOException ex) {
                     Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -71,6 +74,8 @@ public class MainScreen implements KeyListener{
                 try {
                     openNewPage();
                 } catch (IOException ex) {
+                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (LineUnavailableException ex) {
                     Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -104,7 +109,7 @@ public class MainScreen implements KeyListener{
         return button;
     }
 
-    private void openNewPage() throws IOException {
+    private void openNewPage() throws IOException, LineUnavailableException {
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.addKeyListener((KeyListener) this);
@@ -157,29 +162,39 @@ public class MainScreen implements KeyListener{
             quad3.setBackground(green);
             quad4.setBackground(pink);
             quad5.setBackground(blue);
-            
-            */
-            
+*/
         
-            quad1.setPreferredSize(new Dimension(20,20));
-            quad2.setPreferredSize(new Dimension(20, 20));
-            quad3.setPreferredSize(new Dimension(20, 20));
-            quad4.setPreferredSize(new Dimension(20, 20));
-            quad5.setPreferredSize(new Dimension(20, 20));
+            quad1.setPreferredSize(new Dimension(50,50));
+            quad2.setPreferredSize(new Dimension(50, 50));
+            quad3.setPreferredSize(new Dimension(50, 50));
+            quad4.setPreferredSize(new Dimension(50, 50));
+            quad5.setPreferredSize(new Dimension(50, 50));
+            
             
             newPage.add(quad1, gbc);gbc.gridx++;
             newPage.add(quad2, gbc);gbc.gridx++;
             newPage.add(quad3, gbc);gbc.gridx++;
             newPage.add(quad4, gbc);gbc.gridx++;
             newPage.add(quad5, gbc);gbc.gridx++;
-           
+            quad1.setBackground(Color.BLACK);
+            quad2.setBackground(Color.BLACK);
+            quad3.setBackground(Color.BLACK);
+            quad4.setBackground(Color.BLACK);
+            quad5.setBackground(Color.BLACK);
             
             //BufferedImage img = ImageIO.read(new File("src/5.png"));
-            ImageIcon imga= new ImageIcon("src/image/14-2.png");
-            JLabel imag= new JLabel(imga);
-            quad1.add(imag);
+            //ImageIcon imga= new ImageIcon("src/image/img/verde.png");
+            //JLabel imag= new JLabel(imga);
+            quad1.add(new JLabel(new ImageIcon("src/image/img/verde.png")));
+            quad2.add(new JLabel(new ImageIcon("src/image/img/rosso.png")));
+            quad3.add(new JLabel(new ImageIcon("src/image/img/giallo.png")));
+            quad4.add(new JLabel(new ImageIcon("src/image/img/blu.png")));
+            quad5.add(new JLabel(new ImageIcon("src/image/img/arancio.png")));
+
+            
            
-            new GestisciPallini(quad1, quad2, quad3, quad4, quad5).start();
+           
+            //new GestisciPallini(quad1, quad2, quad3, quad4, quad5).start();
 
             
             
