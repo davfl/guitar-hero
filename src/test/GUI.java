@@ -40,6 +40,7 @@ public class GUI {
             /* run song */
             //playSong(fileName);
             
+            
     }
      public static void connectToserver(String fileName) throws IOException{
             Socket socket = new Socket("localhost", 1234);
@@ -60,7 +61,7 @@ public class GUI {
             System.out.println("File received successfully");
     }
     
-    public static void playSong(String filename)
+   /* public static void playSong(String filename)
     {
         try
         {
@@ -83,5 +84,5 @@ public class GUI {
         {
             exc.printStackTrace(System.out);
         }
-    }
+    }*/
 }

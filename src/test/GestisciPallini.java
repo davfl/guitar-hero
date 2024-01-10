@@ -53,40 +53,20 @@ public class GestisciPallini extends Thread {
         timer.scheduleAtFixedRate(timerTask, 0,1);
        // playSong();
         int i=0;
-        //tempoTotale=clip.getMicrosecondPosition();
+       
         System.out.println(tempoTotale);
         while(timerTask.getCount()<tempoTotale){
-       // while(clip.getMicrosecondPosition() < tempoTotale){
-           // System.out.println("timer " +timerTask.getCount());
-           // for (int i=0; i<oggetti.size(); i++){
-           // System.out.println(clip.getMicrosecondPosition());
+
             if(i<oggetti.size()){
                 long sec= oggetti.get(i).getLong("tempo");
                 int nota=oggetti.get(i).getInt("posizione");                
-                //this.cambiaColore();
+                this.cambiaColore();
                 if(timerTask.getCount()-2<=sec && timerTask.getCount()+2>=sec){
-                //if(clip.getMicrosecondPosition()==sec){    
-                    switch (nota){
-                        case 1:
-                            this.quad1.setBackground(Color.white);
-                            break;
-                        case 2:
-                            this.quad2.setBackground(Color.white);
-                            break;
-                        case 3:
-                            this.quad3.setBackground(Color.white);
-                            break;
-                        case 4:
-                            this.quad4.setBackground(Color.white);
-                            break;
-                        case 5:
-                            this.quad5.setBackground(Color.white);
-                            break;  
-                    }
+                    apparePallino(nota);
                     try {
                         sleep(1000);
                     } catch (InterruptedException ex) {
-                        Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println("errore");
                     }
                     i++;
                     this.cambiaColore();
@@ -94,6 +74,25 @@ public class GestisciPallini extends Thread {
             } 
         }   
         timer.cancel();
+    }
+    private void apparePallino(int nota){
+        switch (nota){
+            case 1:
+                this.quad1.setBackground(Color.white);
+                break;
+            case 2:
+                this.quad2.setBackground(Color.white);
+                break;
+            case 3:
+                this.quad3.setBackground(Color.white);
+                break;
+            case 4:
+                this.quad4.setBackground(Color.white);
+                break;
+            case 5:
+                this.quad5.setBackground(Color.white);
+                break;  
+        }
     }
    /* public void playSong()
     {
