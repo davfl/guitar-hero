@@ -30,6 +30,8 @@ import javax.swing.JPanel;
  * @author DAVIDE
  */
 public class Gioco implements KeyListener{
+    private GridBagConstraints gbc;
+    private JPanel newPage;
     private JFrame frame;
     private JPanel mainPanel;
     private int punteggio=0;
@@ -43,14 +45,16 @@ public class Gioco implements KeyListener{
     public Gioco(JFrame frame, JPanel mainPanel) {
         this.frame=frame;
         this.mainPanel=mainPanel;
+        gbc= new GridBagConstraints(); 
+        newPage=new JPanel(new GridBagLayout());
     }
     public void openNewPage() throws IOException, LineUnavailableException {
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.addKeyListener((KeyListener) this);
 
-        JPanel newPage = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        //JPanel newPage = new JPanel(new GridBagLayout());
+       // GridBagConstraints gbc = new GridBagConstraints();
         newPage.setBackground(Color.BLACK);
         
         score = new JLabel("Score");
@@ -62,7 +66,8 @@ public class Gioco implements KeyListener{
         newPage.add(score, gbc);
         
         // Linee bianche
-        gbc.gridx = 0;
+        creaRighe();
+   /*     gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weighty = 1.0; // Vertical weight
         gbc.insets = new Insets(0, 10, 0, 10);
@@ -74,7 +79,7 @@ public class Gioco implements KeyListener{
             newPage.add(line, gbc);
             gbc.gridx++;
         }
-
+*/
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -98,13 +103,11 @@ public class Gioco implements KeyListener{
             quad4.setBackground(pink);
             quad5.setBackground(blue);
 
-        
             quad1.setPreferredSize(new Dimension(50,50));
             quad2.setPreferredSize(new Dimension(50, 50));
             quad3.setPreferredSize(new Dimension(50, 50));
             quad4.setPreferredSize(new Dimension(50, 50));
             quad5.setPreferredSize(new Dimension(50, 50));
-            
             
             newPage.add(quad1, gbc);gbc.gridx++;
             newPage.add(quad2, gbc);gbc.gridx++;
@@ -123,11 +126,8 @@ public class Gioco implements KeyListener{
             quad4.add(new JLabel(new ImageIcon("src/image/img/blu.png")));
             quad5.add(new JLabel(new ImageIcon("src/image/img/arancio.png")));
 */
-            
-           
             new GestisciPallini(quad1, quad2, quad3, quad4, quad5).start();
-            
-            
+     
         JButton backButton = createStyledButton("Back");
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -158,9 +158,23 @@ public class Gioco implements KeyListener{
         button.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
         return button;
     }
+    private void creaRighe(){
+        // Linee bianche
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weighty = 1.0; // Vertical weight
+        gbc.insets = new Insets(0, 10, 0, 10);
+
+        for (int i = 0; i < 5; i++) {
+            JPanel line = new JPanel();
+            line.setBackground(Color.WHITE);
+            line.setPreferredSize(new Dimension(2, 370));
+            newPage.add(line, gbc);
+            gbc.gridx++;
+        }
+    }
     
-    
-     public void keyTyped(KeyEvent e) {
+    public void keyTyped(KeyEvent e) {
         // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
         //score.setText("Score: "+punteggio);
         if(quad1.getBackground().equals(white) && e.getKeyChar()=='a'){
