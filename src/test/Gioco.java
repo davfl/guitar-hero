@@ -31,6 +31,7 @@ import javax.swing.JPanel;
  */
 public class Gioco implements KeyListener{
     private GridBagConstraints gbc;
+    private GestioneMusica musica;
     private JPanel newPage;
     private JFrame frame;
     private JPanel mainPanel;
@@ -42,11 +43,17 @@ public class Gioco implements KeyListener{
     private JPanel quad5;
     private JLabel score;
     
-    public Gioco(JFrame frame, JPanel mainPanel) {
+    public Gioco(JFrame frame, JPanel mainPanel) throws LineUnavailableException {
+        quad1 = new JPanel();
+        quad2 = new JPanel();
+        quad3 = new JPanel();
+        quad4 = new JPanel();
+        quad5 = new JPanel();
         this.frame=frame;
         this.mainPanel=mainPanel;
         gbc= new GridBagConstraints(); 
         newPage=new JPanel(new GridBagLayout());
+        musica= new GestioneMusica("canzoni_ricevute/received_audio.wav");
     }
     public void openNewPage() throws IOException, LineUnavailableException {
         frame.getContentPane().removeAll();
@@ -67,53 +74,13 @@ public class Gioco implements KeyListener{
         
         // Linee bianche
         creaRighe();
-   /*     gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1.0; // Vertical weight
-        gbc.insets = new Insets(0, 10, 0, 10);
-
-        for (int i = 0; i < 5; i++) {
-            JPanel line = new JPanel();
-            line.setBackground(Color.WHITE);
-            line.setPreferredSize(new Dimension(2, 370));
-            newPage.add(line, gbc);
-            gbc.gridx++;
-        }
-*/
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weighty = 0.0; // Reset vertical weight
-        
-            quad1 = new JPanel();
-            quad2 = new JPanel();
-            quad3 = new JPanel();
-            quad4 = new JPanel();
-            quad5 = new JPanel();
-            
+        gbc.weighty = 0.0;
+        creaQuadrati();
+       /*  // Reset vertical weight     
             //set dei colori
-            Color red = Color.red;
-            Color yellow = Color.yellow;
-            Color green = Color.green;
-            Color pink = Color.pink;
-            Color blue = Color.blue;
-            quad1.setBackground(red);
-            quad2.setBackground(yellow);
-            quad3.setBackground(green);
-            quad4.setBackground(pink);
-            quad5.setBackground(blue);
-
-            quad1.setPreferredSize(new Dimension(50,50));
-            quad2.setPreferredSize(new Dimension(50, 50));
-            quad3.setPreferredSize(new Dimension(50, 50));
-            quad4.setPreferredSize(new Dimension(50, 50));
-            quad5.setPreferredSize(new Dimension(50, 50));
-            
-            newPage.add(quad1, gbc);gbc.gridx++;
-            newPage.add(quad2, gbc);gbc.gridx++;
-            newPage.add(quad3, gbc);gbc.gridx++;
-            newPage.add(quad4, gbc);gbc.gridx++;
-            newPage.add(quad5, gbc);gbc.gridx++;
            /* quad1.setBackground(Color.BLACK);
             quad2.setBackground(Color.BLACK);
             quad3.setBackground(Color.BLACK);
@@ -173,7 +140,25 @@ public class Gioco implements KeyListener{
             gbc.gridx++;
         }
     }
-    
+    private void creaQuadrati(){
+        quad1.setBackground(Color.red);
+        quad2.setBackground(Color.yellow);
+        quad3.setBackground(Color.green);
+        quad4.setBackground(Color.pink);
+        quad5.setBackground(Color.blue);
+
+        quad1.setPreferredSize(new Dimension(50,50));
+        quad2.setPreferredSize(new Dimension(50, 50));
+        quad3.setPreferredSize(new Dimension(50, 50));
+        quad4.setPreferredSize(new Dimension(50, 50));
+        quad5.setPreferredSize(new Dimension(50, 50));
+
+        newPage.add(quad1, gbc);gbc.gridx++;
+        newPage.add(quad2, gbc);gbc.gridx++;
+        newPage.add(quad3, gbc);gbc.gridx++;
+        newPage.add(quad4, gbc);gbc.gridx++;
+        newPage.add(quad5, gbc);gbc.gridx++;
+    }
     public void keyTyped(KeyEvent e) {
         // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
         //score.setText("Score: "+punteggio);

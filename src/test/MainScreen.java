@@ -2,23 +2,11 @@ package test;
 
 import javax.swing.*;
 import java.awt.*;
-import static java.awt.Color.blue;
-import static java.awt.Color.green;
-import static java.awt.Color.orange;
-import static java.awt.Color.pink;
-import static java.awt.Color.red;
-import static java.awt.Color.white;
-import static java.awt.Color.yellow;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 
 public class MainScreen {//implements KeyListener{
@@ -66,9 +54,8 @@ public class MainScreen {//implements KeyListener{
         multiplayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Gioco g= new Gioco(frame, mainPanel);
-                
                 try {
+                    Gioco g= new Gioco(frame, mainPanel);
                     g.openNewPage();
                 } catch (IOException ex) {
                     Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);

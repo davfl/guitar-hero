@@ -6,14 +6,12 @@
       },
       {
         "posizione": 3,
-        "tempo": 3050
+        "tempo": 1050
       },
       {
         "posizione": 5,
-        "tempo": 7000
+        "tempo": 4000
       }
-    ],
 
-    "tempoTotale": 8000
-
+    ]
 }
