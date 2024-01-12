@@ -61,28 +61,5 @@ public class GUI {
             System.out.println("File received successfully");
     }
     
-   /* public static void playSong(String filename)
-    {
-        try
-        {
-            final Clip clip = (Clip)AudioSystem.getLine(new Line.Info(Clip.class));
 
-            clip.addLineListener(new LineListener()
-            {
-                @Override
-                public void update(LineEvent event)
-                {
-                    if (event.getType() == LineEvent.Type.STOP)
-                        clip.close();
-                }
-            });
-
-            clip.open(AudioSystem.getAudioInputStream(new File(filename)));
-            clip.start();
-        }
-        catch (Exception exc)
-        {
-            exc.printStackTrace(System.out);
-        }
-    }*/
 }

@@ -11,6 +11,8 @@ import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,16 +37,24 @@ public class GestisciPallini extends Thread {
         this.quad4 = quad4;
         this.quad5 = quad5;
         this.oggetti= new ArrayList<>();
- 
+        
+        
+        
+        
     }
     
+    
+    /*
+    // Palla sopra ogni linea
+    
+        
+    
+    
+    */
     @Override
     public void run(){
         leggiJSON();
         
-       /* GestioneTimer timerTask= new GestioneTimer();
-        Timer timer= new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0,1);*/
       
         for(int i=0; i<oggetti.size();i++){
             long sec= oggetti.get(i).getLong("tempo"); //il tempo in cui deve apparire la nota
@@ -67,6 +77,7 @@ public class GestisciPallini extends Thread {
         }   
         //timer.cancel();
     }
+   
     private void apparePallino(int nota){
         switch (nota){
             case 1:

@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -24,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -42,6 +44,8 @@ public class Gioco implements KeyListener{
     private JPanel quad4;
     private JPanel quad5;
     private JLabel score;
+    private ArrayList<JLabel> palle;
+    private ImageIcon imgPalla;
     
     public Gioco(JFrame frame, JPanel mainPanel) throws LineUnavailableException {
         quad1 = new JPanel();
@@ -54,6 +58,8 @@ public class Gioco implements KeyListener{
         gbc= new GridBagConstraints(); 
         newPage=new JPanel(new GridBagLayout());
         musica= new GestioneMusica("canzoni_ricevute/received_audio.wav");
+        palle= new ArrayList<>();
+        imgPalla = new ImageIcon("src/palla/ball.png"); 
     }
     public void openNewPage() throws IOException, LineUnavailableException {
         frame.getContentPane().removeAll();
@@ -74,6 +80,27 @@ public class Gioco implements KeyListener{
         
         // Linee bianche
         creaRighe();
+       
+        // Palla sopra ogni linea
+
+         
+        // Aggiungi l'immagine (palla) sopra ogni linea con il timer
+        for (int i = 0; i < 5; i++) {
+            JLabel lblPalla = new JLabel(imgPalla);
+            lblPalla.setPreferredSize(new Dimension(50, 50));
+            //posizione
+            gbc.gridx = i;
+            gbc.gridy = 0;
+            gbc.anchor = GridBagConstraints.PAGE_START;
+            gbc.insets = new Insets(0, 10, 0, 10);
+
+            newPage.add(lblPalla, gbc);
+            
+            palle.add(lblPalla);
+            
+          
+        }
+        
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
