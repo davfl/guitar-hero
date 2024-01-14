@@ -120,7 +120,7 @@ public class Gioco implements KeyListener{
             quad4.add(new JLabel(new ImageIcon("src/image/img/blu.png")));
             quad5.add(new JLabel(new ImageIcon("src/image/img/arancio.png")));
 */
-            new GestisciPallini(quad1, quad2, quad3, quad4, quad5, palle, gbc, newPage).start();
+            new GestisciPallini(quad1, quad2, quad3, quad4, quad5, gbc, newPage).start();
      
         JButton backButton = createStyledButton("Back");
         backButton.addActionListener(new ActionListener() {
