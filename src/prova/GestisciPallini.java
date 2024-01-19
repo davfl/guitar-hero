@@ -32,26 +32,17 @@ import org.json.JSONObject;
  *
  * @author DAVIDE
  */
-public class GestisciPallini extends Thread implements KeyListener{
-    private JPanel quad1;
-    private JPanel quad2;
-    private JPanel quad3;
-    private JPanel quad4;
-    private JPanel quad5;
+public class GestisciPallini extends Thread{
+
     private ArrayList<JSONObject> oggetti;
     private GridBagConstraints gbc;
     private JPanel panel;
-
-    public GestisciPallini(JPanel quad1, JPanel quad2, JPanel quad3, JPanel quad4, JPanel quad5,GridBagConstraints gbc, JPanel panel) throws LineUnavailableException {
-        this.quad1 = quad1;
-        this.quad2 = quad2;
-        this.quad3 = quad3;
-        this.quad4 = quad4;
-        this.quad5 = quad5;
+    private JFrame frame;
+    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame) throws LineUnavailableException {
         this.oggetti= new ArrayList<>();
         this.gbc=gbc;
         this.panel=panel;
-        
+        this.frame=frame;
     }
     @Override
     public void run(){
@@ -67,18 +58,18 @@ public class GestisciPallini extends Thread implements KeyListener{
             } catch (InterruptedException ex) {
                 Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try {
-                apparePallino(nota);
-                //new prov(nota, gbc, panel).start();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            //try {
+                //apparePallino(nota);
+                new prov(nota, gbc, panel, frame).start();
+          //  } catch (InterruptedException ex) {
+           //     Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
+          //  }
 
         }   
     }
    
     private void apparePallino(int nota) throws InterruptedException{
-            ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
+           /* ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
            // JLabel lblPalla = new JLabel(imgPalla);
             //lblPalla.setPreferredSize(new Dimension(50, 50));
             JLabel lblPalla= new JLabel(imgPalla);
@@ -90,14 +81,16 @@ public class GestisciPallini extends Thread implements KeyListener{
             this.gbc.gridy=0;
             this.panel.add(lblPalla, gbc);
             SwingUtilities.updateComponentTreeUI(panel);
-
-        Timer timer = new Timer(20, new ActionListener() {
+*/
+       /* Timer timer = new Timer(20, new ActionListener() {
             int y = 0;
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 y += 5; 
+               // System.out.println(y);
                 lblPalla.setLocation(lblPalla.getX(),y);
+                
                 //panel.repaint();
                 if (y >= 500) { 
                     panel.remove(lblPalla);
@@ -106,7 +99,7 @@ public class GestisciPallini extends Thread implements KeyListener{
             }
         });
 
-        timer.start();
+        timer.start();*/
 
     }
     private void leggiJSON(){
@@ -125,9 +118,13 @@ public class GestisciPallini extends Thread implements KeyListener{
         }
     }    
 
-    @Override
+   /* @Override
     public void keyTyped(KeyEvent e) {
         int punteggio=0;
+        //if(e.getKeyChar()=='a' && )
+        
+        
+        
         // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
         //score.setText("Score: "+punteggio);
         if(quad1.getBackground().equals(white) && e.getKeyChar()=='a'){
@@ -160,5 +157,5 @@ public class GestisciPallini extends Thread implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    }*/
 }

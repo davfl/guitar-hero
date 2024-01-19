@@ -64,7 +64,7 @@ public class Gioco {
     public void openNewPage() throws IOException, LineUnavailableException {
         frame.getContentPane().removeAll();
         frame.repaint();
-//        frame.addKeyListener((KeyListener) this);
+        //frame.addKeyListener((KeyListener) );
 
         //JPanel newPage = new JPanel(new GridBagLayout());
        // GridBagConstraints gbc = new GridBagConstraints();
@@ -120,7 +120,7 @@ public class Gioco {
             quad4.add(new JLabel(new ImageIcon("src/image/img/blu.png")));
             quad5.add(new JLabel(new ImageIcon("src/image/img/arancio.png")));
 */
-            new GestisciPallini(quad1, quad2, quad3, quad4, quad5, gbc, newPage).start();
+            new GestisciPallini(gbc, newPage, frame).start();
      
         JButton backButton = createStyledButton("Back");
         backButton.addActionListener(new ActionListener() {

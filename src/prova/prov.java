@@ -7,9 +7,12 @@ package prova;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -18,20 +21,27 @@ import javax.swing.SwingUtilities;
  *
  * @author DAVIDE
  */
-/*public class prov extends Thread{
+public class prov extends Thread implements KeyListener{
     private int nota;
-        private GridBagConstraints gbc;
+    private int y;
+    private GridBagConstraints gbc;
     private JPanel panel;
-    
-    public prov(int nota, GridBagConstraints gbc, JPanel panel){
+        ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
+    JLabel lblPalla= new JLabel(imgPalla);
+   private  boolean isPremuto;
+    private JFrame frame;
+    private char [] comandi={'a','s','d','f','g'};
+    public prov(int nota, GridBagConstraints gbc, JPanel panel, JFrame frame){
         this.nota=nota;
         this.gbc=gbc;
         this.panel=panel;
+        this.frame=frame;
+        frame.addKeyListener(this);
+        isPremuto=false;
     }
     public void run(){
         
-    ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
-    JLabel lblPalla= new JLabel(imgPalla);
+
             lblPalla.setPreferredSize(new Dimension(50, 50));
             //posizione
             this.gbc.gridx = nota-1;  
@@ -40,20 +50,57 @@ import javax.swing.SwingUtilities;
             this.gbc.gridy=0;
             this.panel.add(lblPalla, gbc);
             SwingUtilities.updateComponentTreeUI(panel);
-         for(int y=0; y<370;y+=5){
+        for(y=0; y<500;y+=5){
             y+=5;
+            
             lblPalla.setLocation(lblPalla.getX(), y);
-        try {
-            sleep(50);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(prov.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                sleep(50);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(prov.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(isPremuto==true){
+                break;
+            }
         }
-        
-    }
          panel.remove(lblPalla);
          SwingUtilities.updateComponentTreeUI(panel);
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        int punteggio=0;
+    /*    if((y>=400 && y<=430)&& e.getKeyChar()=='a'){
+            isPremuto=true;
+            punteggio++;
+            System.out.println(punteggio);
+        
+        }*/
+        
+        if((y>=400 && y<=430)&& e.getKeyChar()==comandi[nota-1]){
+            isPremuto=true;
+            punteggio++;
+          //  System.out.println(punteggio);
+        
+        }
+        else
+            punteggio--;
+   
+        System.out.println(punteggio);
+
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     
-}*/
+}
