@@ -31,7 +31,7 @@ import javax.swing.Timer;
  *
  * @author DAVIDE
  */
-public class Gioco implements KeyListener{
+public class Gioco {
     private GridBagConstraints gbc;
     private GestioneMusica musica;
     private JPanel newPage;
@@ -64,20 +64,20 @@ public class Gioco implements KeyListener{
     public void openNewPage() throws IOException, LineUnavailableException {
         frame.getContentPane().removeAll();
         frame.repaint();
-        frame.addKeyListener((KeyListener) this);
+//        frame.addKeyListener((KeyListener) this);
 
         //JPanel newPage = new JPanel(new GridBagLayout());
        // GridBagConstraints gbc = new GridBagConstraints();
         newPage.setBackground(Color.BLACK);
         
-        score = new JLabel("Score");
+       /* score = new JLabel("Score");
         score.setFont(new Font("Arial", Font.BOLD, 35));
         score.setForeground(Color.WHITE);
         gbc.gridx = 6;
         gbc.gridy = 1; // o qualsiasi altra posizione desiderata
         gbc.insets = new Insets(10, 50, 0, 0);
         newPage.add(score, gbc);
-        
+        /*/
         // Linee bianche
         creaRighe();
        
@@ -186,7 +186,7 @@ public class Gioco implements KeyListener{
         newPage.add(quad4, gbc);gbc.gridx++;
         newPage.add(quad5, gbc);gbc.gridx++;
     }
-    public void keyTyped(KeyEvent e) {
+   /* public void keyTyped(KeyEvent e) {
         // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
         //score.setText("Score: "+punteggio);
         if(quad1.getBackground().equals(white) && e.getKeyChar()=='a'){
@@ -220,6 +220,6 @@ public class Gioco implements KeyListener{
     
     public void keyReleased(KeyEvent e) {
         // Codice da eseguire quando viene rilasciato un tasto
-    }
+    }*/
     
 }
