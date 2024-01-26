@@ -15,13 +15,15 @@ public class Server {
             System.out.println("Server started");
 
             // Wait for a client to connect
-            Socket socket = serverSocket.accept();
-            Socket socket2= serverSocket.accept();
-            System.out.println("Client connected");
-            
-            new MultiClient(socket, socket2).start();
+            while(true){
+                Socket socket = serverSocket.accept();
+                Socket socket2= serverSocket.accept();
+                System.out.println("Client connected");
+
+                new MultiClient(socket, socket2).start();
+            }
         
-            serverSocket.close();
+           // serverSocket.close();
 
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);

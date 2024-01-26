@@ -70,37 +70,19 @@ public class Gioco {
        // GridBagConstraints gbc = new GridBagConstraints();
         newPage.setBackground(Color.BLACK);
         
-       /* score = new JLabel("Score");
+        score = new JLabel("Score");
         score.setFont(new Font("Arial", Font.BOLD, 35));
         score.setForeground(Color.WHITE);
         gbc.gridx = 6;
         gbc.gridy = 1; // o qualsiasi altra posizione desiderata
         gbc.insets = new Insets(10, 50, 0, 0);
         newPage.add(score, gbc);
-        /*/
+        
         // Linee bianche
         creaRighe();
-       
+        //musica.playSong();
         // Palla sopra ogni linea
 
-         
-        // Aggiungi l'immagine (palla) sopra ogni linea con il timer
-      /*  for (int i = 0; i < 5; i++) {
-            JLabel lblPalla = new JLabel(imgPalla);
-            lblPalla.setPreferredSize(new Dimension(50, 50));
-            //posizione
-            gbc.gridx = i;
-            gbc.gridy = 0;
-            gbc.anchor = GridBagConstraints.PAGE_START;
-            gbc.insets = new Insets(0, 10, 0, 10);
-
-            newPage.add(lblPalla, gbc);
-            
-            palle.add(lblPalla);
-            
-          
-        }
-        */
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -120,7 +102,8 @@ public class Gioco {
             quad4.add(new JLabel(new ImageIcon("src/image/img/blu.png")));
             quad5.add(new JLabel(new ImageIcon("src/image/img/arancio.png")));
 */
-            new GestisciPallini(gbc, newPage, frame).start();
+            GestisciPallini pallini = new GestisciPallini(gbc, newPage, frame, score);
+            pallini.start();
      
         JButton backButton = createStyledButton("Back");
         backButton.addActionListener(new ActionListener() {
@@ -186,40 +169,4 @@ public class Gioco {
         newPage.add(quad4, gbc);gbc.gridx++;
         newPage.add(quad5, gbc);gbc.gridx++;
     }
-   /* public void keyTyped(KeyEvent e) {
-        // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
-        //score.setText("Score: "+punteggio);
-        if(quad1.getBackground().equals(white) && e.getKeyChar()=='a'){
-            punteggio++;
-        }
-        else if (quad2.getBackground().equals(white) && e.getKeyChar()=='s'){
-            punteggio++; 
-        }
-        else if(quad3.getBackground().equals(white) && e.getKeyChar()=='d'){
-            punteggio++; 
-        }
-        else if(quad4.getBackground().equals(white) && e.getKeyChar()=='f'){
-            punteggio++; 
-        }
-        else if(quad5.getBackground().equals(white) && e.getKeyChar()=='g'){
-            punteggio++; 
-        }
-        else{
-            punteggio--; 
-        }
-        score.setText("Score: "+punteggio);
-        //System.out.println(punteggio);
-    }
-
-    
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        System.out.println("Tasto premuto: " + KeyEvent.getKeyText(keyCode));
-    }
-
-    
-    public void keyReleased(KeyEvent e) {
-        // Codice da eseguire quando viene rilasciato un tasto
-    }*/
-    
 }
