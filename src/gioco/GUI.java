@@ -1,3 +1,5 @@
+package gioco;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,27 +33,16 @@ public class GUI {
      */
    
     public static void main(String[] args) throws InterruptedException, IOException {
-        // TODO code application logic here
-        new MyFrame();
-       //new NewFrame();
-        //try {
+        new MainScreen();
             // Connect to the server
             String fileName = "canzoni_ricevute/received_audio.wav";
             connectToserver(fileName);
-            
-            //leggiJSON();
             /* run song */
-            playSong(fileName);
+            //playSong(fileName);
             
             
-
-            
-      /*  } catch (IOException e) {
-            // Log the error
-            System.out.println("Error: " + e.getMessage());
-        }*/
     }
-     public static void connectToserver(String fileName) throws IOException{
+    public static void connectToserver(String fileName) throws IOException{
             Socket socket = new Socket("localhost", 1234);
             System.out.println("Connected to server");
             
@@ -70,40 +61,5 @@ public class GUI {
             System.out.println("File received successfully");
     }
     
-    public static void playSong(String filename)
-    {
-        try
-        {
-            final Clip clip = (Clip)AudioSystem.getLine(new Line.Info(Clip.class));
 
-            clip.addLineListener(new LineListener()
-            {
-                @Override
-                public void update(LineEvent event)
-                {
-                    if (event.getType() == LineEvent.Type.STOP)
-                        clip.close();
-                }
-            });
-
-            clip.open(AudioSystem.getAudioInputStream(new File(filename)));
-            clip.start();
-        }
-        catch (Exception exc)
-        {
-            exc.printStackTrace(System.out);
-        }
-    }
-    public static void leggiJSON() throws IOException{
-        String text = new String(Files.readAllBytes(Paths.get("file_json/prova.json")), StandardCharsets.UTF_8);
-        JSONObject obj = new JSONObject(text);
-        JSONArray data= obj.getJSONArray("data");
-        
-        for(int i=0; i<data.length();i++){
-            JSONObject dato1= data.getJSONObject(i);
-            System.out.println(dato1);
-        }
-
-        
-    }
 }

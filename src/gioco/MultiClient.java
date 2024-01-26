@@ -1,3 +1,5 @@
+package gioco;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,12 +31,12 @@ public class MultiClient extends Thread {
         try{
             
             ArrayList<File>listsongs=new ArrayList<>();
-            listsongs.add(new File("src/canzoni/file1-2.wav"));
-            //listsongs.add(new File("src/canzoni/file2.wav"));
-            //listsongs.add(new File("src/canzoni/file3.wav"));
+            listsongs.add(new File("src/canzoni/file1.wav"));
+            listsongs.add(new File("src/canzoni/file2.wav"));
+            listsongs.add(new File("src/canzoni/file3.wav"));
             Random r= new Random();
-            //int numeroRandoizzato= r.nextInt(3);
-            File file=listsongs.get(0);
+            int numeroRandomizzato= r.nextInt(3);
+            File file=listsongs.get(numeroRandomizzato);
             OutputStream outputStream = socket1.getOutputStream();
             OutputStream outputStream2= socket2.getOutputStream();
             FileInputStream fileInputStream = new FileInputStream(file);

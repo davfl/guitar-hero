@@ -1,4 +1,4 @@
-package prova;
+package gioco;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -89,6 +89,7 @@ public class GestisciPallini extends Thread{
                     System.out.println("Punteggio aumentato!");
                     punteggio++;
                     System.out.println(punteggio);
+                    score.setText("Score: "+punteggio);
                     ((Timer) e.getSource()).stop();
                     panel.remove(lblPalla);
                 }

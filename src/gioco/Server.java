@@ -1,4 +1,4 @@
-package prova;
+package gioco;
 
 import java.io.*;
 import java.net.*;

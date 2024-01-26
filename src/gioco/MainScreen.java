@@ -1,4 +1,4 @@
-package prova;
+package gioco;
 
 import javax.swing.*;
 import java.awt.*;
