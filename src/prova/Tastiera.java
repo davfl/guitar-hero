@@ -15,8 +15,8 @@ import javax.swing.JFrame;
 public class Tastiera implements KeyListener {
 
     private char  tastoPremuto;
-    ///char  rilasciato;
     private JFrame frame;
+    
     public Tastiera (JFrame frame){
         this.frame=frame;
         this.frame.addKeyListener((KeyListener) this);
@@ -32,7 +32,6 @@ public class Tastiera implements KeyListener {
     public void keyPressed(KeyEvent e) {
         System.out.println("sto premendo");
         tastoPremuto = e.getKeyChar();
-        //rilasciato = e.getKeyChar();
     }
 
     @Override

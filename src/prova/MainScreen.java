@@ -19,8 +19,6 @@ public class MainScreen {//implements KeyListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setFocusable(true);
         
-        
-        
         mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         mainPanel.setOpaque(false);
@@ -103,42 +101,4 @@ public class MainScreen {//implements KeyListener{
             }
         });
     }*/
-
-        
-    /*public void keyTyped(KeyEvent e) {
-        // Codice da eseguire quando viene digitato un tasto (ad esempio, caratteri)
-        //score.setText("Score: "+punteggio);
-        if(quad1.getBackground().equals(white) && e.getKeyChar()=='a'){
-            punteggio++;
-        }
-        else if (quad2.getBackground().equals(white) && e.getKeyChar()=='s'){
-            punteggio++; 
-        }
-        else if(quad3.getBackground().equals(white) && e.getKeyChar()=='d'){
-            punteggio++; 
-        }
-        else if(quad4.getBackground().equals(white) && e.getKeyChar()=='f'){
-            punteggio++; 
-        }
-        else if(quad5.getBackground().equals(white) && e.getKeyChar()=='g'){
-            punteggio++; 
-        }
-        else{
-            punteggio--; 
-        }
-        score.setText("Score: "+punteggio);
-        //System.out.println(punteggio);
-    }
-
-    
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        System.out.println("Tasto premuto: " + KeyEvent.getKeyText(keyCode));
-    }
-
-    
-    public void keyReleased(KeyEvent e) {
-        // Codice da eseguire quando viene rilasciato un tasto
-    }
-*/
 }
