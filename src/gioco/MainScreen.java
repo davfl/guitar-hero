@@ -46,6 +46,8 @@ public class MainScreen {//implements KeyListener{
                     Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
                  } catch (IOException ex) {
                     Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

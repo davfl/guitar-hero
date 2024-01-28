@@ -43,7 +43,7 @@ public class GestisciPallini extends Thread{
         this.gbc=gbc;
         this.panel=panel;
         this.frame=frame;
-        punteggio=0;
+        this.punteggio=0;
         tastiera= new Tastiera(frame);
         this.score=score;
         this.connessione=connessione;
@@ -65,8 +65,20 @@ public class GestisciPallini extends Thread{
                 Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-        }  
+        } 
+        
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
         connessione.inviaPunteggio(punteggio);
+        try {
+            connessione.riceviVincitore();
+        } catch (IOException ex) {
+            Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     private void apparePallino(int nota) throws InterruptedException{
             ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");

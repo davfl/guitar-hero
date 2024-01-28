@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
@@ -88,13 +89,20 @@ public class MultiClient extends Thread {
             r1.join();
             r2.join();
            
-            if(r1.getPunteggio()>r2.getPunteggio())
-                System.out.println("vince r1");
-            else if(r1.getPunteggio()<r2.getPunteggio())
-                System.out.println("vince r2");
-            else
-                System.out.println("parita");
+            PrintWriter out1= new PrintWriter(socket1.getOutputStream(), true);
+            PrintWriter out2= new PrintWriter(socket2.getOutputStream(), true);
             
+            String msg=null;
+            
+            if(r1.getPunteggio()>r2.getPunteggio())
+                msg="vince r1";
+            else if(r1.getPunteggio()<r2.getPunteggio())
+                msg="vince r2";
+            else
+                msg="parita";
+            
+            out1.println(msg);
+            out2.println(msg);
             
             fileInputStream.close();
             fileInputStream2.close();

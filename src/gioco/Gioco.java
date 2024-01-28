@@ -63,7 +63,20 @@ public class Gioco {
         imgPalla = new ImageIcon("src/palla/ball.png");
         connessione= new Connessione();
     }
-    public void openNewPage() throws IOException, LineUnavailableException {
+    public void openNewPage() throws IOException, LineUnavailableException, InterruptedException {
+        /*frame.getContentPane().removeAll();
+        frame.repaint();
+        newPage.setBackground(Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 10, 0, 10);
+        JLabel avviso= new JLabel("attendi");
+        avviso.setFont(new Font("Arial", Font.BOLD, 35));
+        avviso.setForeground(Color.WHITE);
+        newPage.add(avviso, gbc);
+        frame.add(newPage);
+        frame.revalidate();
+        */
         connessione.connessione();
         frame.getContentPane().removeAll();
         frame.repaint();
@@ -111,6 +124,7 @@ public class Gioco {
         
         frame.add(newPage);
         frame.revalidate();
+        //connessione.riceviVincitore();
     }
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);

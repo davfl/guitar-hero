@@ -43,10 +43,16 @@ public class GestioneMusica {
 
             clip.open(AudioSystem.getAudioInputStream(new File(fileName)));
             clip.start();
+            
         }
         catch (Exception exc)
         {
             exc.printStackTrace(System.out);
         }
     }
+
+    public Clip getClip() {
+        return clip;
+    }
+    
 }
