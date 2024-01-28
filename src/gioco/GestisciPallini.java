@@ -38,7 +38,7 @@ public class GestisciPallini extends Thread{
     private JLabel score;
     private Connessione connessione;
     
-    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame, JLabel score) throws LineUnavailableException {
+    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame, JLabel score, Connessione connessione) throws LineUnavailableException {
         this.oggetti= new ArrayList<>();
         this.gbc=gbc;
         this.panel=panel;
@@ -46,9 +46,9 @@ public class GestisciPallini extends Thread{
         punteggio=0;
         tastiera= new Tastiera(frame);
         this.score=score;
-        //this.connessione=connessione;
+        this.connessione=connessione;
     }
-    @Override
+    
     public void run(){
         leggiJSON();
         for(int i=0; i<oggetti.size();i++){
@@ -66,7 +66,7 @@ public class GestisciPallini extends Thread{
             }
             
         }  
-        //connessione.inviaPunteggio(punteggio);
+        connessione.inviaPunteggio(punteggio);
     }
     private void apparePallino(int nota) throws InterruptedException{
             ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
@@ -88,10 +88,9 @@ public class GestisciPallini extends Thread{
                 lblPalla.setLocation(lblPalla.getX(), y);
                 panel.repaint();
                 if ((y>=400 && y<=430) && tastiera.getTastoPremuto()==comandi[nota-1]) {
-                    System.out.println("Punteggio aumentato!");
+                  //  System.out.println("Punteggio aumentato!");
                     punteggio++;
-                    System.out.println(punteggio);
-                    score.setText("Score: "+punteggio);
+                   // System.out.println(punteggio);
                     ((Timer) e.getSource()).stop();
                     panel.remove(lblPalla);
                 }
@@ -100,6 +99,7 @@ public class GestisciPallini extends Thread{
                     panel.remove(lblPalla);
                     punteggio--;
                 }
+                score.setText("Score: "+punteggio);
             }
         });
         timer.start();

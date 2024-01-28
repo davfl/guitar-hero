@@ -43,26 +43,15 @@ public class GUI {
             
             
     }
-    public static void connectToserver(String fileName) throws IOException, InterruptedException{
+   /* public static void connectToserver(String fileName) throws IOException, InterruptedException{
             Socket socket = new Socket("localhost", 1234);
             System.out.println("Connected to server");
             
             
             InputStream inputStream = socket.getInputStream();
-            
-            
-           /* byte[] buffer1 = new byte[1024]; 
-            byte[] buffer2 = new byte[1024]; */
             FileOutputStream fileOutputStream = new FileOutputStream(fileName);
             FileOutputStream fileOutputStream2 = new FileOutputStream("file_json/prova.json");
-            //BufferedOutputStream buf1 = new BufferedOutputStream(fileOutputStream);
-          //  BufferedOutputStream buf2 = new BufferedOutputStream(fileOutputStream2);
 
-           /* int bytesRead = inputStream.read(buffer1, 0, buffer1.length);
-            buf1.write(buffer1, 0, bytesRead);*/
-            
-           /* int bytesRead2 = inputStream.read(buffer2, 0, buffer2.length);
-            buf2.write(buffer2, 0, bytesRead2);*/
            
             byte [] lunghezza=new byte[8];
             int bytesRead = inputStream.read(lunghezza);
@@ -75,7 +64,9 @@ public class GUI {
             long cont=0;
             while (cont<myInt &&(bytesRead1 = inputStream.read(buffer))!=-1) {
                 fileOutputStream.write(buffer, 0, bytesRead1);
-                cont+=1024;
+                System.out.println(bytesRead1);
+                cont+=bytesRead1;
+                System.out.println(cont);
             }
             while ((bytesRead2 = inputStream.read(buffer2)) != -1) {
                 fileOutputStream2.write(buffer2, 0, bytesRead2);
@@ -85,7 +76,7 @@ public class GUI {
             inputStream.close();
            // socket.close();
             System.out.println("File received successfully");
-    }
+    }*/
     
 
 }

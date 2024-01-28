@@ -67,10 +67,6 @@ public class Gioco {
         connessione.connessione();
         frame.getContentPane().removeAll();
         frame.repaint();
-        //frame.addKeyListener((KeyListener) );
-
-        //JPanel newPage = new JPanel(new GridBagLayout());
-       // GridBagConstraints gbc = new GridBagConstraints();
         newPage.setBackground(Color.BLACK);
         
         score = new JLabel("Score");
@@ -83,7 +79,7 @@ public class Gioco {
         
         // Linee bianche
         creaRighe();
-        //musica.playSong();
+        musica.playSong();
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -92,7 +88,7 @@ public class Gioco {
        /*  // Reset vertical weight     
             //set dei colori
 */
-            GestisciPallini pallini = new GestisciPallini(gbc, newPage, frame, score);
+            GestisciPallini pallini = new GestisciPallini(gbc, newPage, frame, score, connessione);
             pallini.start();
      
         JButton backButton = createStyledButton("Back");

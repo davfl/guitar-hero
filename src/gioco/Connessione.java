@@ -18,7 +18,7 @@ public class Connessione {
     private Socket socket;
     private PrintWriter out;
     public Connessione() throws IOException{
-        this.socket=new Socket("localhost", 1234);;
+        this.socket=new Socket("localhost", 1234);
         out= new PrintWriter(socket.getOutputStream(), true);
     }
 
@@ -29,30 +29,41 @@ public class Connessione {
         FileOutputStream fileOutputStream2 = new FileOutputStream("file_json/prova.json");
 
         byte [] lunghezza=new byte[8];
-        int bytesRead = inputStream.read(lunghezza);
-        int myInt = Integer.parseInt(new String(lunghezza, 0, bytesRead));  
-        System.out.println(myInt);
+        byte [] lunghezza2= new byte[8];
+ 
+        int lunghezzaFile1 = inputStream.read(lunghezza);
+        int lunghezzaFile2= inputStream.read(lunghezza2);
+        
+        int myInt = Integer.parseInt(new String(lunghezza, 0, lunghezzaFile1)); 
+        int myInt2= Integer.parseInt(new String(lunghezza2, 0, lunghezzaFile2));
+        
+        //System.out.println(myInt);
         byte[] buffer = new byte[1024];
         byte[] buffer2= new byte[1024];
         int bytesRead1;
         int bytesRead2;
         long cont=0;
+        long cont2=0;
+        
         while (cont<myInt &&(bytesRead1 = inputStream.read(buffer))!=-1) {
             fileOutputStream.write(buffer, 0, bytesRead1);
-            cont+=1024;
+            cont+=bytesRead1;
         }
-        while ((bytesRead2 = inputStream.read(buffer2)) != -1) {
-            fileOutputStream2.write(buffer2, 0, bytesRead2);
-        }
-
         fileOutputStream.close();
-        inputStream.close();
+        while (cont2<myInt2 && (bytesRead2 = inputStream.read(buffer2)) != -1) {
+            fileOutputStream2.write(buffer2, 0, bytesRead2);
+            cont2+=bytesRead2;
+        }
+        fileOutputStream2.close();
+        
+        //inputStream.close();
        // socket.close();
 
        System.out.println("File received successfully");
     }
     public void inviaPunteggio(int punteggio){
-        out.print(punteggio);
+        out.println(punteggio);
+        System.out.println("sto inviando il punteggio");
     }
 }
         

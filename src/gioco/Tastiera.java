@@ -30,7 +30,7 @@ public class Tastiera implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("sto premendo");
+        //System.out.println("sto premendo");
         tastoPremuto = e.getKeyChar();
     }
 

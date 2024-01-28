@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/GestioneMusica.java</file>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/MainScreen.java</file>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/GestisciPallini.java</file>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/Server.java</file>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/GestioneTimer.java</file>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/MultiClient.java</file>
-            <file>file:/C:/Users/DAVIDE/Documents/guitar-hero/src/test/GUI.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/MainScreen.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/server/MultiClient.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/server/Server.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/GUI.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/server/Ricevitore.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/GestioneMusica.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/Tastiera.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/Gioco.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/GestisciPallini.java</file>
+            <file>file:/C:/Users/DAVIDE/Desktop/prog/guitar-hero/src/gioco/Connessione.java</file>
         </group>
     </open-files>
 </project-private>
