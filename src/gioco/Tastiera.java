@@ -43,8 +43,4 @@ public class Tastiera implements KeyListener {
         return tastoPremuto;
     }
     
-    
-    
-    
-    
 }

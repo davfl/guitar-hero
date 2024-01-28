@@ -46,8 +46,9 @@ public class Gioco {
     private JLabel score;
     private ArrayList<JLabel> palle;
     private ImageIcon imgPalla;
+    private Connessione connessione;
     
-    public Gioco(JFrame frame, JPanel mainPanel) throws LineUnavailableException {
+    public Gioco(JFrame frame, JPanel mainPanel) throws LineUnavailableException, IOException {
         quad1 = new JPanel();
         quad2 = new JPanel();
         quad3 = new JPanel();
@@ -59,9 +60,11 @@ public class Gioco {
         newPage=new JPanel(new GridBagLayout());
         musica= new GestioneMusica("canzoni_ricevute/received_audio.wav");
         palle= new ArrayList<>();
-        imgPalla = new ImageIcon("src/palla/ball.png"); 
+        imgPalla = new ImageIcon("src/palla/ball.png");
+        connessione= new Connessione();
     }
     public void openNewPage() throws IOException, LineUnavailableException {
+        connessione.connessione();
         frame.getContentPane().removeAll();
         frame.repaint();
         //frame.addKeyListener((KeyListener) );
@@ -81,8 +84,6 @@ public class Gioco {
         // Linee bianche
         creaRighe();
         //musica.playSong();
-        // Palla sopra ogni linea
-
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -90,17 +91,6 @@ public class Gioco {
         creaQuadrati();
        /*  // Reset vertical weight     
             //set dei colori
-           /* quad1.setBackground(Color.BLACK);
-            quad2.setBackground(Color.BLACK);
-            quad3.setBackground(Color.BLACK);
-            quad4.setBackground(Color.BLACK);
-            quad5.setBackground(Color.BLACK);*/
-            
-          /*  quad1.add(new JLabel(new ImageIcon("src/image/img/verde.png")));
-            quad2.add(new JLabel(new ImageIcon("src/image/img/rosso.png")));
-            quad3.add(new JLabel(new ImageIcon("src/image/img/giallo.png")));
-            quad4.add(new JLabel(new ImageIcon("src/image/img/blu.png")));
-            quad5.add(new JLabel(new ImageIcon("src/image/img/arancio.png")));
 */
             GestisciPallini pallini = new GestisciPallini(gbc, newPage, frame, score);
             pallini.start();

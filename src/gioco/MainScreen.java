@@ -18,6 +18,7 @@ public class MainScreen {//implements KeyListener{
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setFocusable(true);
+        frame.setResizable(false);
         
         mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -32,7 +33,7 @@ public class MainScreen {//implements KeyListener{
 
         // buttons
         JButton playButton = createStyledButton("Play");
-        JButton multiplayerButton = createStyledButton("Multiplayer");
+        //JButton multiplayerButton = createStyledButton("Multiplayer");
 
         playButton.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +50,7 @@ public class MainScreen {//implements KeyListener{
             }
         });
 
-        multiplayerButton.addActionListener(new ActionListener() {
+        /*multiplayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -62,7 +63,7 @@ public class MainScreen {//implements KeyListener{
                 }
             }
         });
-
+*/
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 0, 10, 0); // Padding
@@ -71,8 +72,8 @@ public class MainScreen {//implements KeyListener{
         gbc.gridy = 1;
         mainPanel.add(playButton, gbc);
 
-        gbc.gridy = 2;
-        mainPanel.add(multiplayerButton, gbc);
+       // gbc.gridy = 2;
+        //mainPanel.add(multiplayerButton, gbc);
 
         // Set background image directly on the content pane
         frame.setContentPane(new JLabel(backgroundImage));

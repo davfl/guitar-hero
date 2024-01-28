@@ -1,6 +1,7 @@
 package gioco;
 
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -36,28 +37,53 @@ public class GUI {
         new MainScreen();
             // Connect to the server
             String fileName = "canzoni_ricevute/received_audio.wav";
-            connectToserver(fileName);
+           // connectToserver(fileName);
             /* run song */
             //playSong(fileName);
             
             
     }
-    public static void connectToserver(String fileName) throws IOException{
+    public static void connectToserver(String fileName) throws IOException, InterruptedException{
             Socket socket = new Socket("localhost", 1234);
             System.out.println("Connected to server");
             
-            // Receive the audio file from the server
+            
             InputStream inputStream = socket.getInputStream();
             
+            
+           /* byte[] buffer1 = new byte[1024]; 
+            byte[] buffer2 = new byte[1024]; */
             FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+            FileOutputStream fileOutputStream2 = new FileOutputStream("file_json/prova.json");
+            //BufferedOutputStream buf1 = new BufferedOutputStream(fileOutputStream);
+          //  BufferedOutputStream buf2 = new BufferedOutputStream(fileOutputStream2);
+
+           /* int bytesRead = inputStream.read(buffer1, 0, buffer1.length);
+            buf1.write(buffer1, 0, bytesRead);*/
+            
+           /* int bytesRead2 = inputStream.read(buffer2, 0, buffer2.length);
+            buf2.write(buffer2, 0, bytesRead2);*/
+           
+            byte [] lunghezza=new byte[8];
+            int bytesRead = inputStream.read(lunghezza);
+            int myInt = Integer.parseInt(new String(lunghezza, 0, bytesRead));  
+            System.out.println(myInt);
             byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                fileOutputStream.write(buffer, 0, bytesRead);
+            byte[] buffer2= new byte[1024];
+            int bytesRead1;
+            int bytesRead2;
+            long cont=0;
+            while (cont<myInt &&(bytesRead1 = inputStream.read(buffer))!=-1) {
+                fileOutputStream.write(buffer, 0, bytesRead1);
+                cont+=1024;
             }
+            while ((bytesRead2 = inputStream.read(buffer2)) != -1) {
+                fileOutputStream2.write(buffer2, 0, bytesRead2);
+            }
+            
             fileOutputStream.close();
             inputStream.close();
-            socket.close();
+           // socket.close();
             System.out.println("File received successfully");
     }
     

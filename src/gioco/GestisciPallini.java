@@ -35,10 +35,10 @@ public class GestisciPallini extends Thread{
     private int punteggio;
     private Tastiera tastiera;
     private char [] comandi={'a','s','d','f','g'};
-    JLabel score;
+    private JLabel score;
+    private Connessione connessione;
     
-    
-    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame, JLabel score ) throws LineUnavailableException {
+    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame, JLabel score) throws LineUnavailableException {
         this.oggetti= new ArrayList<>();
         this.gbc=gbc;
         this.panel=panel;
@@ -46,6 +46,7 @@ public class GestisciPallini extends Thread{
         punteggio=0;
         tastiera= new Tastiera(frame);
         this.score=score;
+        //this.connessione=connessione;
     }
     @Override
     public void run(){
@@ -64,7 +65,8 @@ public class GestisciPallini extends Thread{
                 Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-        }   
+        }  
+        //connessione.inviaPunteggio(punteggio);
     }
     private void apparePallino(int nota) throws InterruptedException{
             ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
@@ -96,7 +98,7 @@ public class GestisciPallini extends Thread{
                 if (y >= 500) {
                     ((Timer) e.getSource()).stop();
                     panel.remove(lblPalla);
-
+                    punteggio--;
                 }
             }
         });
