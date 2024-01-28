@@ -4,6 +4,8 @@
  */
 package gioco;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,21 +29,28 @@ public class Connessione {
         msg=null;
     }
 
-    public void connessione() throws IOException{
-        InputStream inputStream = socket.getInputStream();
-
+    public void connessione(String user) throws IOException{
+        DataInputStream inputStream = new DataInputStream(socket.getInputStream());
+        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
+        
+        outputStream.writeUTF(user);
+        
         FileOutputStream fileOutputStream = new FileOutputStream("canzoni_ricevute/received_audio.wav");
         FileOutputStream fileOutputStream2 = new FileOutputStream("file_json/prova.json");
 
-        byte [] lunghezza=new byte[8];
-        byte [] lunghezza2= new byte[8];
+      /*  byte [] lunghezza=new byte[8];
+        byte [] lunghezza2= new byte[8];*/
  
-        int lunghezzaFile1 = inputStream.read(lunghezza);
-        int lunghezzaFile2= inputStream.read(lunghezza2);
+        long myInt=inputStream.readLong();
+        long myInt2=inputStream.readLong();
         
-        int myInt = Integer.parseInt(new String(lunghezza, 0, lunghezzaFile1)); 
-        int myInt2= Integer.parseInt(new String(lunghezza2, 0, lunghezzaFile2));
+        //int lunghezzaFile1 = inputStream.read(lunghezza);
+        //int lunghezzaFile2= inputStream.read(lunghezza2);
         
+       /* int myInt = Integer.parseInt(new String(lunghezza, 0, lunghezzaFile1)); 
+        int myInt2= Integer.parseInt(new String(lunghezza2, 0, lunghezzaFile2));*/
+
+       
         //System.out.println(myInt);
         byte[] buffer = new byte[1024];
         byte[] buffer2= new byte[1024];

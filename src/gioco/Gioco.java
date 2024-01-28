@@ -44,11 +44,12 @@ public class Gioco {
     private JPanel quad4;
     private JPanel quad5;
     private JLabel score;
-    private ArrayList<JLabel> palle;
+    //private ArrayList<JLabel> palle;
     private ImageIcon imgPalla;
     private Connessione connessione;
+    private String username;
     
-    public Gioco(JFrame frame, JPanel mainPanel) throws LineUnavailableException, IOException {
+    public Gioco(JFrame frame, JPanel mainPanel, String username) throws LineUnavailableException, IOException {
         quad1 = new JPanel();
         quad2 = new JPanel();
         quad3 = new JPanel();
@@ -59,14 +60,15 @@ public class Gioco {
         gbc= new GridBagConstraints(); 
         newPage=new JPanel(new GridBagLayout());
         musica= new GestioneMusica("canzoni_ricevute/received_audio.wav");
-        palle= new ArrayList<>();
+        //palle= new ArrayList<>();
         imgPalla = new ImageIcon("src/palla/ball.png");
         connessione= new Connessione();
+        this.username=username;
     }
     public void openNewPage() throws IOException, LineUnavailableException, InterruptedException {
 
        // paginaIniziale();
-        connessione.connessione();
+        connessione.connessione(username);
         newPage.removeAll();
         frame.getContentPane().removeAll();
         frame.repaint();

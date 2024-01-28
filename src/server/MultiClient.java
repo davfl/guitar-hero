@@ -2,6 +2,8 @@ package server;
 
 
 import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -47,9 +49,15 @@ public class MultiClient extends Thread {
             File file=listsongs.get(numeroRandomizzato);
             File file2= fileJson.get(0);
 
-            OutputStream outputStream = socket1.getOutputStream();
-            OutputStream outputStream2= socket2.getOutputStream();
+            DataOutputStream outputStream = new DataOutputStream(socket1.getOutputStream());
+            DataOutputStream outputStream2= new DataOutputStream(socket2.getOutputStream());
 
+            DataInputStream inputStream = new DataInputStream(socket1.getInputStream());
+            DataInputStream inputStream2= new DataInputStream(socket2.getInputStream());
+            
+            String user1=inputStream.readUTF();
+            String user2=inputStream2.readUTF();
+            
             FileInputStream fileInputStream = new FileInputStream(file);
             FileInputStream fileInputStream2 =  new FileInputStream(file2);
 
@@ -57,18 +65,13 @@ public class MultiClient extends Thread {
             byte[] buffer2 = new byte[1024];
             int bytesRead;
             int bytesRead2;
+           
+            outputStream.writeLong(file.length());
+            outputStream2.writeLong(file.length());
             
-            byte[] intBytes = Integer.toString((int)file.length()).getBytes();
-            byte [] intBytes2= Integer.toString((int)file2.length()).getBytes();
-            //byte[] lunghezza(file.length());
-            //System.out.println((int)file.length());
-            outputStream.write(intBytes);
-            outputStream2.write(intBytes);
-            
-            
-            outputStream.write(intBytes2);
-            outputStream2.write(intBytes2);
-            
+            outputStream.writeLong(file2.length());
+            outputStream2.writeLong(file2.length());
+                        
             while ((bytesRead = fileInputStream.read(buffer)) != -1) {//finchè il 
                 outputStream.write(buffer, 0, bytesRead);
                 outputStream2.write(buffer, 0, bytesRead);
@@ -95,9 +98,9 @@ public class MultiClient extends Thread {
             String msg=null;
             
             if(r1.getPunteggio()>r2.getPunteggio())
-                msg="vince r1";
+                msg="vince: "+user1;
             else if(r1.getPunteggio()<r2.getPunteggio())
-                msg="vince r2";
+                msg="vince: "+user2;
             else
                 msg="parita";
             
