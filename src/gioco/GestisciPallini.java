@@ -17,6 +17,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import org.json.JSONArray;
@@ -79,6 +80,8 @@ public class GestisciPallini extends Thread{
         } catch (IOException ex) {
             Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        JOptionPane.showMessageDialog(panel, connessione.getMsg(), "VINCITORE", JOptionPane.WARNING_MESSAGE);
     }
     private void apparePallino(int nota) throws InterruptedException{
             ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");

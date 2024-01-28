@@ -75,5 +75,9 @@ public class Connessione {
         msg=sc.nextLine();
         System.out.println(msg);
     }
+
+    public String getMsg() {
+        return msg;
+    }
 }
         

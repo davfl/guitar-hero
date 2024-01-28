@@ -64,20 +64,10 @@ public class Gioco {
         connessione= new Connessione();
     }
     public void openNewPage() throws IOException, LineUnavailableException, InterruptedException {
-        /*frame.getContentPane().removeAll();
-        frame.repaint();
-        newPage.setBackground(Color.BLACK);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 10, 0, 10);
-        JLabel avviso= new JLabel("attendi");
-        avviso.setFont(new Font("Arial", Font.BOLD, 35));
-        avviso.setForeground(Color.WHITE);
-        newPage.add(avviso, gbc);
-        frame.add(newPage);
-        frame.revalidate();
-        */
+
+       // paginaIniziale();
         connessione.connessione();
+        newPage.removeAll();
         frame.getContentPane().removeAll();
         frame.repaint();
         newPage.setBackground(Color.BLACK);
@@ -168,5 +158,19 @@ public class Gioco {
         newPage.add(quad3, gbc);gbc.gridx++;
         newPage.add(quad4, gbc);gbc.gridx++;
         newPage.add(quad5, gbc);gbc.gridx++;
+    }
+    private void paginaIniziale(){
+        frame.getContentPane().removeAll();
+        frame.repaint();
+        newPage.setBackground(Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 10, 0, 10);
+        JLabel avviso= new JLabel("attendi");
+        avviso.setFont(new Font("Arial", Font.BOLD, 35));
+        avviso.setForeground(Color.WHITE);
+        newPage.add(avviso, gbc);
+        frame.add(newPage);
+        frame.revalidate();     
     }
 }
