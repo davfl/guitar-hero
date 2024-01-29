@@ -34,7 +34,7 @@ import javax.swing.Timer;
 public class Gioco {
     private GridBagConstraints gbc;
     private GestioneMusica musica;
-    private JPanel newPage;
+    private JPanel panelGioco;
     private JFrame frame;
     private JPanel mainPanel;
     private int punteggio=0;
@@ -58,7 +58,7 @@ public class Gioco {
         this.frame=frame;
         this.mainPanel=mainPanel;
         gbc= new GridBagConstraints(); 
-        newPage=new JPanel(new GridBagLayout());
+        panelGioco=new JPanel(new GridBagLayout());
         musica= new GestioneMusica("canzoni_ricevute/received_audio.wav");
         //palle= new ArrayList<>();
         imgPalla = new ImageIcon("src/palla/ball.png");
@@ -69,10 +69,10 @@ public class Gioco {
 
        // paginaIniziale();
         connessione.connessione(username);
-        newPage.removeAll();
+        panelGioco.removeAll();
         frame.getContentPane().removeAll();
         frame.repaint();
-        newPage.setBackground(Color.BLACK);
+        panelGioco.setBackground(Color.BLACK);
         
         score = new JLabel("Score");
         score.setFont(new Font("Arial", Font.BOLD, 35));
@@ -80,7 +80,7 @@ public class Gioco {
         gbc.gridx = 6;
         gbc.gridy = 1; // o qualsiasi altra posizione desiderata
         gbc.insets = new Insets(10, 50, 0, 0);
-        newPage.add(score, gbc);
+        panelGioco.add(score, gbc);
         
         // Linee bianche
         creaRighe();
@@ -93,7 +93,7 @@ public class Gioco {
        /*  // Reset vertical weight     
             //set dei colori
 */
-            GestisciPallini pallini = new GestisciPallini(gbc, newPage, frame, score, connessione);
+            GestisciPallini pallini = new GestisciPallini(gbc, panelGioco, frame, score, connessione);
             pallini.start();
      
         JButton backButton = createStyledButton("Back");
@@ -112,9 +112,9 @@ public class Gioco {
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.insets = new Insets(55, 0, 0, 0); // Move the button down
-        newPage.add(backButton, gbc);
+        panelGioco.add(backButton, gbc);
         
-        frame.add(newPage);
+        frame.add(panelGioco);
         frame.revalidate();
         //connessione.riceviVincitore();
     }
@@ -138,7 +138,7 @@ public class Gioco {
             JPanel line = new JPanel();
             line.setBackground(Color.WHITE);
             line.setPreferredSize(new Dimension(2, 370));
-            newPage.add(line, gbc);
+            panelGioco.add(line, gbc);
             gbc.gridx++;
         }
     }
@@ -155,24 +155,24 @@ public class Gioco {
         quad4.setPreferredSize(new Dimension(50, 50));
         quad5.setPreferredSize(new Dimension(50, 50));
 
-        newPage.add(quad1, gbc);gbc.gridx++;
-        newPage.add(quad2, gbc);gbc.gridx++;
-        newPage.add(quad3, gbc);gbc.gridx++;
-        newPage.add(quad4, gbc);gbc.gridx++;
-        newPage.add(quad5, gbc);gbc.gridx++;
+        panelGioco.add(quad1, gbc);gbc.gridx++;
+        panelGioco.add(quad2, gbc);gbc.gridx++;
+        panelGioco.add(quad3, gbc);gbc.gridx++;
+        panelGioco.add(quad4, gbc);gbc.gridx++;
+        panelGioco.add(quad5, gbc);gbc.gridx++;
     }
     private void paginaIniziale(){
         frame.getContentPane().removeAll();
         frame.repaint();
-        newPage.setBackground(Color.BLACK);
+        panelGioco.setBackground(Color.BLACK);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 10, 0, 10);
         JLabel avviso= new JLabel("attendi");
         avviso.setFont(new Font("Arial", Font.BOLD, 35));
         avviso.setForeground(Color.WHITE);
-        newPage.add(avviso, gbc);
-        frame.add(newPage);
+        panelGioco.add(avviso, gbc);
+        frame.add(panelGioco);
         frame.revalidate();     
     }
 }

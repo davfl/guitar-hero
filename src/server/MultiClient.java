@@ -62,9 +62,9 @@ public class MultiClient extends Thread {
             FileInputStream fileInputStream2 =  new FileInputStream(file2);
 
             byte[] buffer = new byte[1024];
-            byte[] buffer2 = new byte[1024];
+           // byte[] buffer2 = new byte[1024];
             int bytesRead;
-            int bytesRead2;
+           // int bytesRead2;
            
             outputStream.writeLong(file.length());
             outputStream2.writeLong(file.length());
@@ -76,11 +76,12 @@ public class MultiClient extends Thread {
                 outputStream.write(buffer, 0, bytesRead);
                 outputStream2.write(buffer, 0, bytesRead);
             }
-            while ((bytesRead2 = fileInputStream2.read(buffer2)) != -1) {//finchè il 
+            bytesRead=0;
+            while ((bytesRead = fileInputStream2.read(buffer)) != -1) {//finchè il 
                 //System.out.println("entro nel ciclo");
                // System.out.println(bytesRead2);
-                outputStream.write(buffer2, 0, bytesRead2);
-                outputStream2.write(buffer2, 0, bytesRead2);
+                outputStream.write(buffer, 0, bytesRead);
+                outputStream2.write(buffer, 0, bytesRead);
             }
             
             Ricevitore r1=  new Ricevitore(socket1);
@@ -98,9 +99,9 @@ public class MultiClient extends Thread {
             String msg=null;
             
             if(r1.getPunteggio()>r2.getPunteggio())
-                msg="vince: "+user1;
+                msg=user1;
             else if(r1.getPunteggio()<r2.getPunteggio())
-                msg="vince: "+user2;
+                msg=user2;
             else
                 msg="parita";
             

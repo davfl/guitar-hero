@@ -25,7 +25,7 @@ public class Connessione {
     public Connessione() throws IOException{
         this.socket=new Socket("localhost", 1234);
         out= new PrintWriter(socket.getOutputStream(), true);
-        //sc= new Scanner(socket.getInputStream());
+        sc= new Scanner(socket.getInputStream());
         msg=null;
     }
 
@@ -38,35 +38,25 @@ public class Connessione {
         FileOutputStream fileOutputStream = new FileOutputStream("canzoni_ricevute/received_audio.wav");
         FileOutputStream fileOutputStream2 = new FileOutputStream("file_json/prova.json");
 
-      /*  byte [] lunghezza=new byte[8];
-        byte [] lunghezza2= new byte[8];*/
- 
         long myInt=inputStream.readLong();
         long myInt2=inputStream.readLong();
-        
-        //int lunghezzaFile1 = inputStream.read(lunghezza);
-        //int lunghezzaFile2= inputStream.read(lunghezza2);
-        
-       /* int myInt = Integer.parseInt(new String(lunghezza, 0, lunghezzaFile1)); 
-        int myInt2= Integer.parseInt(new String(lunghezza2, 0, lunghezzaFile2));*/
-
-       
-        //System.out.println(myInt);
         byte[] buffer = new byte[1024];
-        byte[] buffer2= new byte[1024];
+        //byte[] buffer2= new byte[1024];
         int bytesRead1;
-        int bytesRead2;
+        //int bytesRead2;
         long cont=0;
-        long cont2=0;
+        //long cont2=0;
         
         while (cont<myInt &&(bytesRead1 = inputStream.read(buffer))!=-1) {
             fileOutputStream.write(buffer, 0, bytesRead1);
             cont+=bytesRead1;
         }
+        bytesRead1=0;
+        cont=0;
         fileOutputStream.close();
-        while (cont2<myInt2 && (bytesRead2 = inputStream.read(buffer2)) != -1) {
-            fileOutputStream2.write(buffer2, 0, bytesRead2);
-            cont2+=bytesRead2;
+        while (cont<myInt2 && (bytesRead1 = inputStream.read(buffer)) != -1) {
+            fileOutputStream2.write(buffer, 0, bytesRead1);
+            cont+=bytesRead1;
         }
         fileOutputStream2.close();
         
@@ -80,7 +70,7 @@ public class Connessione {
         System.out.println("sto inviando il punteggio");
     }
     public void riceviVincitore() throws IOException{
-        sc=new Scanner(socket.getInputStream());
+        //sc=new Scanner(socket.getInputStream());
         msg=sc.nextLine();
         System.out.println(msg);
     }

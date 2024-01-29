@@ -38,19 +38,8 @@ public class MainScreen {//implements KeyListener{
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // try {
                     Username u= new Username(frame, mainPanel);
                     u.pagina();
-                    //Gioco g= new Gioco(frame, mainPanel);
-                    //g.openNewPage();
-               // } 
-               /*  catch (LineUnavailableException ex) {
-                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
-                 } catch (IOException ex) {
-                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
-                */
             }
         });
 
