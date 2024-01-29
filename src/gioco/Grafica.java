@@ -6,7 +6,6 @@ package gioco;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import static java.awt.Color.white;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -14,10 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -25,15 +21,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  *
  * @author DAVIDE
  */
-public class Gioco {
+public abstract class Grafica {
+    
     private GridBagConstraints gbc;
-    private GestioneMusica musica;
     private JPanel panelGioco;
     private JFrame frame;
     private JPanel mainPanel;
@@ -44,12 +39,9 @@ public class Gioco {
     private JPanel quad4;
     private JPanel quad5;
     private JLabel score;
-    //private ArrayList<JLabel> palle;
     private ImageIcon imgPalla;
-    private Connessione connessione;
-    private String username;
     
-    public Gioco(JFrame frame, JPanel mainPanel, String username) throws LineUnavailableException, IOException {
+    public Grafica (JFrame frame, JPanel mainPanel) {
         quad1 = new JPanel();
         quad2 = new JPanel();
         quad3 = new JPanel();
@@ -59,15 +51,10 @@ public class Gioco {
         this.mainPanel=mainPanel;
         gbc= new GridBagConstraints(); 
         panelGioco=new JPanel(new GridBagLayout());
-        musica= new GestioneMusica("canzoni_ricevute/received_audio.wav");
         imgPalla = new ImageIcon("src/palla/ball.png");
-        connessione= new Connessione();
-        this.username=username;
     }
-    public void openNewPage() throws IOException, LineUnavailableException, InterruptedException {
+    public  void window() throws IOException, LineUnavailableException, InterruptedException {
 
-       // paginaIniziale();
-        connessione.connessione(username);
         panelGioco.removeAll();
         frame.getContentPane().removeAll();
         frame.repaint();
@@ -83,39 +70,17 @@ public class Gioco {
         
         // Linee bianche
         creaRighe();
-        musica.playSong();
         // Quadratini
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weighty = 0.0;
         creaQuadrati();
-       /*  // Reset vertical weight     
-            //set dei colori
-*/
-            GestisciPallini pallini = new GestisciPallini(gbc, panelGioco, frame, score, connessione);
-            pallini.start();
-     
-        JButton backButton = createStyledButton("Back");
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getContentPane().removeAll();
-                frame.repaint();
-                frame.setContentPane(new JLabel(new ImageIcon("src/image/red.jpg")));
-                frame.setLayout(new BorderLayout());
-                frame.add(mainPanel, BorderLayout.CENTER);//disegna sopra il main panel, ovvero quello di partenza
-                frame.revalidate();//ricarica la pagina di base
-            }
-        });
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.insets = new Insets(55, 0, 0, 0); // Move the button down
-        panelGioco.add(backButton, gbc);
-        
+       /*     GestisciPallini pallini = new GestisciPallini(gbc, panelGioco, frame, score, connessione);
+            pallini.start();
+     */
         frame.add(panelGioco);
         frame.revalidate();
-        //connessione.riceviVincitore();
     }
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
@@ -160,18 +125,5 @@ public class Gioco {
         panelGioco.add(quad4, gbc);gbc.gridx++;
         panelGioco.add(quad5, gbc);gbc.gridx++;
     }
-    private void paginaIniziale(){
-        frame.getContentPane().removeAll();
-        frame.repaint();
-        panelGioco.setBackground(Color.BLACK);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.insets = new Insets(0, 10, 0, 10);
-        JLabel avviso= new JLabel("attendi");
-        avviso.setFont(new Font("Arial", Font.BOLD, 35));
-        avviso.setForeground(Color.WHITE);
-        panelGioco.add(avviso, gbc);
-        frame.add(panelGioco);
-        frame.revalidate();     
-    }
+
 }
