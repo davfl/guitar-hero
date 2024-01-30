@@ -12,7 +12,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -52,17 +56,33 @@ public class SceltaLivelli {
         btnLivello1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                
-                
+                    SinglePlayer s;
+                try {
+                    s = new SinglePlayer(frame, mainPanel, "file1");
+                    s.openNewPage();
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(SceltaLivelli.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(SceltaLivelli.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SceltaLivelli.class.getName()).log(Level.SEVERE, null, ex);
+                }    
             }
         });
 
         btnLivello2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Username u= new Username(frame, mainPanel);
-                u.pagina();
+                try {
+                    SinglePlayer s= new SinglePlayer(frame, mainPanel, "file2");
+                    s.openNewPage();
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(SceltaLivelli.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(SceltaLivelli.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SceltaLivelli.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
