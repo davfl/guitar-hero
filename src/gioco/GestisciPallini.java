@@ -1,4 +1,5 @@
 package gioco;
+import gioco.*;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -38,8 +39,9 @@ public class GestisciPallini extends Thread{
     private char [] comandi={'a','s','d','f','g'};
     private JLabel score;
     private Connessione connessione;
+    private String percorso;
     
-    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame, JLabel score, Connessione connessione) throws LineUnavailableException {
+    public GestisciPallini(GridBagConstraints gbc, JPanel panel, JFrame frame, JLabel score, Connessione connessione, String percorso) throws LineUnavailableException {
         this.oggetti= new ArrayList<>();
         this.gbc=gbc;
         this.panel=panel;
@@ -48,6 +50,7 @@ public class GestisciPallini extends Thread{
         tastiera= new Tastiera(frame);
         this.score=score;
         this.connessione=connessione;
+        this.percorso=percorso;
     }
     
     public void run(){
@@ -73,15 +76,16 @@ public class GestisciPallini extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-        connessione.inviaPunteggio(punteggio);
-        try {
-            connessione.riceviVincitore();
-        } catch (IOException ex) {
-            Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if(connessione != null){
+            connessione.inviaPunteggio(punteggio);
+            try {
+                connessione.riceviVincitore();
+            } catch (IOException ex) {
+                Logger.getLogger(GestisciPallini.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        JOptionPane.showMessageDialog(panel, connessione.getMsg(), "VINCITORE", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(panel, connessione.getMsg(), "VINCITORE", JOptionPane.WARNING_MESSAGE);
+        }
     }
     private void apparePallino(int nota) throws InterruptedException{
             ImageIcon imgPalla= new ImageIcon("src/palla/ball.png");
@@ -122,7 +126,7 @@ public class GestisciPallini extends Thread{
     private void leggiJSON(){
         String text;
         try {
-            text = new String(Files.readAllBytes(Paths.get("file_json/prova.json")), StandardCharsets.UTF_8); 
+            text = new String(Files.readAllBytes(Paths.get(percorso)), StandardCharsets.UTF_8); 
             JSONObject obj = new JSONObject(text);   
             JSONArray data= obj.getJSONArray("data");
             

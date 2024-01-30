@@ -4,6 +4,7 @@
  */
 package gioco;
 
+import gioco.*;
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;

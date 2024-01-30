@@ -1,5 +1,6 @@
 package gioco;
 
+import gioco.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -33,30 +34,23 @@ public class MainScreen {//implements KeyListener{
 
         // buttons
         JButton playButton = createStyledButton("Play");
-        //JButton multiplayerButton = createStyledButton("Multiplayer");
+        JButton multiplayerButton = createStyledButton("Multiplayer");
 
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    Username u= new Username(frame, mainPanel);
-                    u.pagina();
+                SceltaLivelli s= new SceltaLivelli(frame);  
             }
         });
 
-        /*multiplayerButton.addActionListener(new ActionListener() {
+        multiplayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Gioco g= new Gioco(frame, mainPanel);
-                    g.openNewPage();
-                } catch (IOException ex) {
-                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (LineUnavailableException ex) {
-                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Username u= new Username(frame, mainPanel);
+                u.pagina();
             }
         });
-*/
+
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 0, 10, 0); // Padding
@@ -65,8 +59,8 @@ public class MainScreen {//implements KeyListener{
         gbc.gridy = 1;
         mainPanel.add(playButton, gbc);
 
-       // gbc.gridy = 2;
-        //mainPanel.add(multiplayerButton, gbc);
+        gbc.gridy = 2;
+        mainPanel.add(multiplayerButton, gbc);
 
         // Set background image directly on the content pane
         frame.setContentPane(new JLabel(backgroundImage));

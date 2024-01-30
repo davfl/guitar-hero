@@ -4,6 +4,7 @@
  */
 package gioco;
 
+import gioco.*;
 import java.awt.GridBagConstraints;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

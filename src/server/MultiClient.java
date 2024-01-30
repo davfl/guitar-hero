@@ -41,8 +41,8 @@ public class MultiClient extends Thread {
             listsongs.add(new File("src/canzoni/file2.wav"));
             listsongs.add(new File("src/canzoni/file3.wav"));
             fileJson.add(new File("src/fileJson/prova.json"));
-         //   fileJson.add(new File("src/fileJson/prova2.json"));
-          //  fileJson.add(new File("src/fileJson/prova3.json"));
+            fileJson.add(new File("src/fileJson/prova2.json"));
+            fileJson.add(new File("src/fileJson/prova3.json"));
             
             Random r= new Random();
             int numeroRandomizzato= r.nextInt(3);

@@ -4,6 +4,7 @@
  */
 package gioco;
 
+import gioco.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -82,7 +83,7 @@ public class Username {
                 public void actionPerformed(ActionEvent e) {
                     if(!txtUser.getText().isBlank()){
                         try {
-                            Gioco g = new Gioco(frame, mainPanel, txtUser.getText());
+                            Multiplayer g = new Multiplayer(frame, mainPanel, txtUser.getText());
                             g.openNewPage();
                         } catch (LineUnavailableException ex) {
                             java.util.logging.Logger.getLogger(Username.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

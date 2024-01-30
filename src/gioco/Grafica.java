@@ -4,6 +4,7 @@
  */
 package gioco;
 
+import gioco.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,9 +29,9 @@ import javax.swing.JPanel;
  */
 public abstract class Grafica {
     
-    private GridBagConstraints gbc;
-    private JPanel panelGioco;
-    private JFrame frame;
+    protected GridBagConstraints gbc;
+    protected JPanel panelGioco;
+    protected JFrame frame;
     private JPanel mainPanel;
     private int punteggio=0;
     private JPanel quad1;
@@ -38,7 +39,7 @@ public abstract class Grafica {
     private JPanel quad3;
     private JPanel quad4;
     private JPanel quad5;
-    private JLabel score;
+    protected JLabel score;
     private ImageIcon imgPalla;
     
     public Grafica (JFrame frame, JPanel mainPanel) {
@@ -53,7 +54,7 @@ public abstract class Grafica {
         panelGioco=new JPanel(new GridBagLayout());
         imgPalla = new ImageIcon("src/palla/ball.png");
     }
-    public  void window() throws IOException, LineUnavailableException, InterruptedException {
+    public void window() throws IOException, LineUnavailableException, InterruptedException {
 
         panelGioco.removeAll();
         frame.getContentPane().removeAll();
@@ -79,6 +80,29 @@ public abstract class Grafica {
        /*     GestisciPallini pallini = new GestisciPallini(gbc, panelGioco, frame, score, connessione);
             pallini.start();
      */
+       
+        JButton backButton = createStyledButton("Back");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getContentPane().removeAll();
+                frame.repaint();
+                frame.setContentPane(new JLabel(new ImageIcon("src/image/red.jpg")));
+                frame.setLayout(new BorderLayout());
+                frame.add(mainPanel, BorderLayout.CENTER);//disegna sopra il main panel, ovvero quello di partenza
+                frame.revalidate();//ricarica la pagina di base
+            }
+        });
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.insets = new Insets(55, 0, 0, 0); // Move the button down
+        panelGioco.add(backButton, gbc);
+       
+       
+       
+       
+       
         frame.add(panelGioco);
         frame.revalidate();
     }

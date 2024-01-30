@@ -1,6 +1,7 @@
 package gioco;
 
 
+import gioco.*;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
