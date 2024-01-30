@@ -28,8 +28,8 @@ public class Ricevitore extends Thread {
             System.out.println("entro nel run");
             String msg=sc.nextLine();
             punteggio=Integer.parseInt(msg);
-            System.out.println("entro nel run");
-            System.out.println(punteggio);
+            //System.out.println("entro nel run");
+            //System.out.println(punteggio);
                } catch (IOException ex) {
             Logger.getLogger(Ricevitore.class.getName()).log(Level.SEVERE, null, ex);
         }

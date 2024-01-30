@@ -55,5 +55,8 @@ public class GestioneMusica {
     public Clip getClip() {
         return clip;
     }
+    public void fermaMusica(){
+        clip.stop();
+    }
     
 }

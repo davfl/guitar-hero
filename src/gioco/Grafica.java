@@ -32,7 +32,7 @@ public abstract class Grafica {
     protected GridBagConstraints gbc;
     protected JPanel panelGioco;
     protected JFrame frame;
-    private JPanel mainPanel;
+    protected JPanel mainPanel;
     private int punteggio=0;
     private JPanel quad1;
     private JPanel quad2;
@@ -41,6 +41,7 @@ public abstract class Grafica {
     private JPanel quad5;
     protected JLabel score;
     private ImageIcon imgPalla;
+    protected JButton backButton;
     
     public Grafica (JFrame frame, JPanel mainPanel) {
         quad1 = new JPanel();
@@ -53,6 +54,7 @@ public abstract class Grafica {
         gbc= new GridBagConstraints(); 
         panelGioco=new JPanel(new GridBagLayout());
         imgPalla = new ImageIcon("src/palla/ball.png");
+        backButton = createStyledButton("Back");
     }
     public void window() throws IOException, LineUnavailableException, InterruptedException {
 
@@ -81,8 +83,8 @@ public abstract class Grafica {
             pallini.start();
      */
        
-        JButton backButton = createStyledButton("Back");
-        backButton.addActionListener(new ActionListener() {
+        
+        /*backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().removeAll();
@@ -92,7 +94,7 @@ public abstract class Grafica {
                 frame.add(mainPanel, BorderLayout.CENTER);//disegna sopra il main panel, ovvero quello di partenza
                 frame.revalidate();//ricarica la pagina di base
             }
-        });
+        });*/
 
         gbc.gridx = 0;
         gbc.gridy = 3;

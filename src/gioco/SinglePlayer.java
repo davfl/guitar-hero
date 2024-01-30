@@ -4,13 +4,18 @@
  */
 package gioco;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -33,6 +38,18 @@ public class SinglePlayer extends Grafica{
         musica.playSong();
         GestisciPallini pallini = new GestisciPallini(gbc, panelGioco, frame, score, null,"risorseOffline/"+livello+".json" );
         pallini.start();
+        super.backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getContentPane().removeAll();
+                frame.repaint();
+                frame.setContentPane(new JLabel(new ImageIcon("src/image/red.jpg")));
+                frame.setLayout(new BorderLayout());
+                frame.add(mainPanel, BorderLayout.CENTER);//disegna sopra il main panel, ovvero quello di partenza
+                frame.revalidate();//ricarica la pagina di base
+                musica.fermaMusica();
+            }
+        });
     }
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);

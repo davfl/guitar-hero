@@ -49,6 +49,7 @@ public class Multiplayer extends Grafica {
         musica.playSong();
         GestisciPallini pallini = new GestisciPallini(gbc, panelGioco, frame, score, connessione,"file_json/prova.json");
         pallini.start();
+
     }
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
