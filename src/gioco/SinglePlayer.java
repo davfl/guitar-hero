@@ -30,7 +30,7 @@ public class SinglePlayer extends Grafica{
     public SinglePlayer(JFrame frame, JPanel mainPanel, String livello) throws LineUnavailableException {
         super(frame, mainPanel);
         this.livello=livello;
-        musica= new GestioneMusica("risorseOffline/"+livello+".mp3");
+        musica= new GestioneMusica("risorseOffline/"+livello+".wav");
    
     }
     public void openNewPage() throws IOException, LineUnavailableException, InterruptedException {

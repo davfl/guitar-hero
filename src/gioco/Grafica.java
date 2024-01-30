@@ -145,6 +145,32 @@ public abstract class Grafica {
         quad4.setPreferredSize(new Dimension(50, 50));
         quad5.setPreferredSize(new Dimension(50, 50));
 
+        JLabel label1 = new JLabel("A");
+        JLabel label2 = new JLabel("S");
+        JLabel label3 = new JLabel("D");
+        JLabel label4 = new JLabel("F");
+        JLabel label5 = new JLabel("G");
+        
+        label1.setFont(new Font("Calibri", Font.BOLD, 30));
+        label2.setFont(new Font("Calibri", Font.BOLD, 30));
+        label3.setFont(new Font("Calibri", Font.BOLD, 30));
+        label4.setFont(new Font("Calibri", Font.BOLD, 30));
+        label5.setFont(new Font("Calibri", Font.BOLD,30));
+        
+        
+        label1.setForeground(Color.white);
+        label2.setForeground(Color.white);
+        label3.setForeground(Color.white);
+        label4.setForeground(Color.white);
+        label5.setForeground(Color.white);
+        
+        quad1.add(label1);
+        quad2.add(label2);
+        quad3.add(label3);
+        quad4.add(label4);
+        quad5.add(label5);
+        
+        
         panelGioco.add(quad1, gbc);gbc.gridx++;
         panelGioco.add(quad2, gbc);gbc.gridx++;
         panelGioco.add(quad3, gbc);gbc.gridx++;

@@ -25,7 +25,7 @@ public class Ricevitore extends Thread {
     public void run(){
         try {
             Scanner sc= new Scanner(socket.getInputStream());
-            System.out.println("entro nel run");
+            //System.out.println("entro nel run");
             String msg=sc.nextLine();
             punteggio=Integer.parseInt(msg);
             //System.out.println("entro nel run");

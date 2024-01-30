@@ -47,7 +47,6 @@ public class Connessione {
         int bytesRead2;
         long cont=0;
        // long cont2=0;
-        
         while (cont<myInt &&(bytesRead1 = inputStream.read(buffer))!=-1) {
             fileOutputStream.write(buffer, 0, bytesRead1);
             cont+=bytesRead1;
@@ -60,10 +59,8 @@ public class Connessione {
             cont+=bytesRead2;
         }
         fileOutputStream2.close();
-        
         //inputStream.close();
        // socket.close();
-
        System.out.println("File received successfully");
     }
     public void inviaPunteggio(int punteggio){
@@ -75,7 +72,6 @@ public class Connessione {
         msg=sc.nextLine();
         System.out.println(msg);
     }
-
     public String getMsg() {
         return msg;
     }
