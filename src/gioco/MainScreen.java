@@ -1,14 +1,10 @@
 package gioco;
 
-import gioco.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.sound.sampled.LineUnavailableException;
+
 
 public class MainScreen {//implements KeyListener{
     private JFrame frame;
